@@ -26,11 +26,22 @@ export class AppProfileSidebarComponent implements OnInit{
         this.username = localStorage.getItem("username");
     }
 
+    profile() {
+        this.router.navigate(["/dashboard/profile"]);
+
+    }
+
+    billing() {
+        this.router.navigate(["/dashboard/billing"]);
+    }
+
     signOut(){
         localStorage.removeItem("email")
         localStorage.removeItem("username")
         this.router.navigate(["/"]);
     }
+
+
 
     
 }

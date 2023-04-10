@@ -29,7 +29,7 @@ public class InspireController {
         List<Inspire> quote = inspireSvc.getQuote();
 
         Inspire inspireAPI = new Inspire();
-        
+                
         return "inspire";
     }
     

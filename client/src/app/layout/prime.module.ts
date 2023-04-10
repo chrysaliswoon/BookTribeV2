@@ -20,6 +20,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { DataViewModule } from 'primeng/dataview';
+import { MenuModule } from 'primeng/menu';
 
 const components: any [] = [
     CommonModule,
@@ -42,7 +43,8 @@ const components: any [] = [
     FileUploadModule,
     TableModule,
     RatingModule,
-    DataViewModule
+    DataViewModule,
+    MenuModule
 ]
 
 @NgModule({

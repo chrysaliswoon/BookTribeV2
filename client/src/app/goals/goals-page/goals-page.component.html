@@ -1,0 +1,11 @@
+<div class="card">
+    <div class="flex justify-content-between align-items-center mb-5">
+        <span class="text-900 text-xl font-semibold">Task List</span>
+        <button pButton pRipple class="p-button-outlined font-semibold" icon="pi pi-plus" label="Create Task" ></button>
+    </div>
+    <app-goals-task-list [taskList]="todo" title="ToDo"></app-goals-task-list>
+    <app-goals-task-list [taskList]="completed" title="Completed"></app-goals-task-list>
+
+</div>
+
+<app-goals-create-task></app-goals-create-task>

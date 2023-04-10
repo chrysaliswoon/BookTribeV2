@@ -5,6 +5,11 @@ import { LoginComponent } from './auth/login/login/login.component';
 import { LoginWelcomeComponent } from './auth/login/login-welcome/login-welcome.component';
 import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { InspirePageComponent } from './inspire/inspire-page/inspire-page.component';
+import { AboutPageComponent } from './about/about-page/about-page.component';
+import { GoalsPageComponent } from './goals/goals-page/goals-page.component';
+import { TribePageComponent } from './tribe/tribe-page/tribe-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BillingComponent } from './billing/billing.component';
 
 const routes: Routes = [
   {
@@ -17,7 +22,13 @@ const routes: Routes = [
     path: 'dashboard', component: AppLayoutComponent,
     children: [
       {path: '', component: DashboardOverviewComponent},
-      {path: 'inspire', component: InspirePageComponent}
+      {path: 'goals', component: GoalsPageComponent},
+      {path: 'tribe', component: TribePageComponent},
+      {path: 'inspire', component: InspirePageComponent},
+      {path: 'about', component: AboutPageComponent},
+      {path: 'profile', component: ProfileComponent},
+      {path: 'billing', component: BillingComponent}
+
     ]
   }
 ];

@@ -53,5 +53,14 @@ export class UserService {
           )
       }
 
+      getMembers() {
+        const url = this.authURL + "users"
+
+        return this.http.get<any>(url)
+            .toPromise()
+            .then(res => res.data as User[])
+            .then(data => data);
+    }
+
 
 }

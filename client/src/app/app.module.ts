@@ -14,6 +14,17 @@ import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashb
 import { InspireQuoteComponent } from './inspire/inspire-quote/inspire-quote.component';
 import { InspirePoemComponent } from './inspire/inspire-poem/inspire-poem.component';
 import { InspirePageComponent } from './inspire/inspire-page/inspire-page.component';
+import { AboutPageComponent } from './about/about-page/about-page.component';
+import { AboutHabitsComponent } from './about/about-habits/about-habits.component';
+import { AboutInspireComponent } from './about/about-inspire/about-inspire.component';
+import { AboutFaqComponent } from './about/about-faq/about-faq.component';
+import { AboutContactComponent } from './about/about-contact/about-contact.component';
+import { GoalsPageComponent } from './goals/goals-page/goals-page.component';
+import { GoalsCreateTaskComponent } from './goals/goals-create-task/goals-create-task.component';
+import { GoalsTaskListComponent } from './goals/goals-task-list/goals-task-list.component';
+import { TribePageComponent } from './tribe/tribe-page/tribe-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BillingComponent } from './billing/billing.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +35,18 @@ import { InspirePageComponent } from './inspire/inspire-page/inspire-page.compon
     DashboardOverviewComponent,
     InspireQuoteComponent,
     InspirePoemComponent,
-    InspirePageComponent
+    InspirePageComponent,
+    AboutPageComponent,
+    AboutHabitsComponent,
+    AboutInspireComponent,
+    AboutFaqComponent,
+    AboutContactComponent,
+    GoalsPageComponent,
+    GoalsCreateTaskComponent,
+    GoalsTaskListComponent,
+    TribePageComponent,
+    ProfileComponent,
+    BillingComponent
   ],
   imports: [
     BrowserModule,
