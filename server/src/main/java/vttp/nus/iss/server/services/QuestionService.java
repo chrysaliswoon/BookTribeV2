@@ -21,11 +21,13 @@ public class QuestionService {
         String questionId = UUID.randomUUID().toString().substring(0, 8);
         question.setQuestionId(questionId);
 
-        //? Upload image for the post
+        //? Upload image for the question
 
         //? Create post in MongoDB
         ObjectId objectId = questionRepo.insertQuestion(question);
-        
+
+        return Optional.of(questionId);
+
     }
     
 }
