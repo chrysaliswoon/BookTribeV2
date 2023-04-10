@@ -1,0 +1,24 @@
+<form [formGroup]="loginForm" (submit)="processLoginForm()">
+
+    <div class="flex flex-column">
+        <form [formGroup]="loginForm" (submit)="processLoginForm()">
+    
+            <label for="email" class="block">Enter email address</label>
+            <span class="p-input-icon-left w-full mb-4">
+                <i class="pi pi-envelope"></i>
+                <input id="email" type="text" pInputText class="w-full md:w-25rem" placeholder="name@example.com"
+                    formControlName="email">
+            </span>
+    
+            <label for="password" class="block">Password</label>
+            <span class="mb-4">
+                <p-password styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{'width':'100%'}"
+                    [inputStyle]="{'width':'100%'}" placeholder="******" [toggleMask]="true" formControlName="password">
+                </p-password>
+            </span>
+    
+            <button pButton pRipple type="submit" label="Continue"
+                class="p-button-raised p-button-text w-full mb-4"></button>
+        </form>
+    </div>
+    </form>
