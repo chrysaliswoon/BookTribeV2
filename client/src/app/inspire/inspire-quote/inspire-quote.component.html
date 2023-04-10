@@ -1,0 +1,10 @@
+<section class="quote" data-th-each="q: ${quote}" style="padding: 0px 0px 300px 0px" >
+    <article class="container">
+      <h1>Quote of the Day</h1>
+
+      <blockquote>
+        <p data-th-text="${q.content}"></p>
+      </blockquote>
+      <b data-th-text="${q.author}"></b>
+    </article>
+</section>

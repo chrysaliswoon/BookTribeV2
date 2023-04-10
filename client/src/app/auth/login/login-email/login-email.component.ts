@@ -38,7 +38,7 @@ export class LoginEmailComponent implements OnInit{
     .then(results => {
       this.user = results
       localStorage.setItem("email", this.user.email)
-      this.router.navigate(['/dashboard'])
+      this.router.navigate(['/welcome'])
     })
 
     .catch(err => {
