@@ -44,7 +44,7 @@ public class UserRepository {
     }
 
     //? Find user
-    public Optional<User> getUser(String email) {
+    public Optional<User> findUserByEmail(String email) {
 
         SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_USER_BY_EMAIL, email);
 

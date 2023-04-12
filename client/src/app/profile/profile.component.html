@@ -1,1 +1,72 @@
-<p>profile works!</p>
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,900|Playfair+Display:400,700,900" rel="stylesheet">
+
+<div class="cover">
+  <div class="cover__content">
+    <div class="top-section">
+      <div class="title">
+        <h1 class="title__text">{{username}}</h1>
+        <div class="title__details">
+          <p><a href="https://www.behance.net/gallery/48387413/Magazine-Layout">{{email}}</a></p>
+          <p>{{myDate | date: 'shortDate' }}</p>      
+        </div>
+      </div>
+      <div class="top-section__content">
+
+        <div class="content-preview">
+          <h3 class="content-preview__title">Who Am I?</h3>
+          <p class="content-preview__excerpt">autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat ulla facilsilis at vero eros et accumsan et iusto.</p>
+        </div>
+
+        <div class="content-preview">
+          <h3 class="content-preview__title">Genres I Love:</h3>
+          <ul>
+            <li><i class="pi pi-book"> Fantasy </i></li>
+            <li><i class="pi pi-book"> Sci-Fi </i></li>
+            <li><i class="pi pi-book"> Mystery </i></li>
+
+          </ul>
+        </div>  
+      </div>
+    </div>
+
+    <div class="lower-section">
+      
+      <div class="headline">
+        <div class="line line--horizontal line--left"></div>
+        <h2 class="boxed-headline" style="color: white;">
+          Profile Details</h2>
+        <div class="line line--horizontal line--right"></div>
+      </div>
+
+      <div class="line line--vertical line--top"></div>
+      <div class="line line--vertical line--bottom"></div>
+
+      <div class="spacer"></div>
+      <div class="content-preview content-preview--left content-preview--top">
+        <h3 class="content-preview__title" style="color: white;">Personal Details</h3>
+        <p class="content-preview__excerpt">First Name: {{firstName | titlecase}}</p>
+        <p class="content-preview__excerpt">Last Name: {{lastName | titlecase}}</p>
+
+      </div>
+
+      <div class="content-preview  content-preview--right content-preview--top">
+        <h3 class="content-preview__title" style="color: white;">Tribe Members</h3>
+        <p class="content-preview__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi provident vel, architecto numquam nemo repellat.</p>
+      </div>
+      <div class="spacer"></div>
+      <div class="spacer"></div>
+
+      <div class="content-preview content-preview--left content-preview--bottom">
+        <h3 class="content-preview__title" style="color: white;">Favourite Quote</h3>
+        <p class="content-preview__excerpt">Doloremque, totam blanditiis itaque ipsam commodi atque, vero, laborum eos quaerat nostrum deleniti laboriosam debitis.</p>
+      </div>
+
+      <div class="content-preview content-preview--right content-preview--bottom">
+        <h3 class="content-preview__title" style="color: white;">Currently Reading</h3>
+        <p class="content-preview__excerpt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab pariatur eaque nihil tempora facere dicta mollitia impedit, nisi eius.</p>
+      </div>
+    </div>  
+
+  </div>
+
+</div>

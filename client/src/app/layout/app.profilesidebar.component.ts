@@ -38,6 +38,8 @@ export class AppProfileSidebarComponent implements OnInit{
     signOut(){
         localStorage.removeItem("email")
         localStorage.removeItem("username")
+        localStorage.removeItem("firstName")
+        localStorage.removeItem("lastName")
         this.router.navigate(["/"]);
     }
 

@@ -1,6 +1,8 @@
 package vttp.nus.iss.server.services;
 
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,18 @@ public class UserService {
         System.out.println(">>> Authenticating User");
         return result;
     }
+
+    public Optional<User> getUserDetails(String email) {
+        Optional<User> userDetails = userRepo.findUserByEmail(email);
+
+        if (userDetails.isEmpty())
+            return Optional.empty();
+
+        return userDetails;
+
+    }
+
+
 
     
 }

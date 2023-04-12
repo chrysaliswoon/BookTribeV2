@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,9 +6,14 @@ import { Router } from '@angular/router';
   templateUrl: './login-welcome.component.html',
   styleUrls: ['./login-welcome.component.scss']
 })
-export class LoginWelcomeComponent {
-username: string = "Chrysalis";
+export class LoginWelcomeComponent implements OnInit{
+username: any = "";
 
 constructor(public router: Router){}
+
+ngOnInit(): void {
+
+    this.username = localStorage.getItem("username");
+}
 
 }

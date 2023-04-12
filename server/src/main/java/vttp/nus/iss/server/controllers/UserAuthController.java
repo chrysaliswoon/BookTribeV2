@@ -90,9 +90,18 @@ public class UserAuthController {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        
-    
+        System.out.println(user.toJson().toString());
         return new ResponseEntity<String>(user.userJson().toString(), HttpStatus.OK);
+    }
+
+    @GetMapping(path="{email}")
+    @ResponseBody
+    public Optional<User> getUserDetails(@PathVariable String email) {
+        Optional<User> userDetails = userSvc.getUserDetails(email);
+
+        System.out.println(">>> Getting User Details");
+
+        return userDetails;
     }
 
 

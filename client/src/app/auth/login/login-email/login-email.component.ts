@@ -11,8 +11,9 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginEmailComponent implements OnInit{
 
-  loginForm!: FormGroup
-  user!: User
+  loginForm!: FormGroup;
+  user!: User; 
+  
 
   constructor(private fb: FormBuilder,  private userSvc:UserService , private router: Router){}
 
@@ -27,23 +28,29 @@ export class LoginEmailComponent implements OnInit{
     })
   }
 
-  processLoginForm() {
+  getUserDetails() {
+    this.user = this.loginForm.value;
+    this.userSvc.getUser(this.user.email).subscribe(data =>{
+      this.user = data;
+      localStorage.setItem("username", this.user.username);
+      localStorage.setItem("firstName", this.user.firstName);
+      localStorage.setItem("lastName", this.user.lastName);
+      localStorage.setItem("email", this.user.email);
+      this.goToWelcomePage()
+      });
+  }
+
+  goToWelcomePage() {
+    this.router.navigate(['/welcome'])
+  }
+
+  onSubmit() {
     if (this.loginForm.invalid) {
       return;
     }
 
-    this.user = this.loginForm.value;
-    this.userSvc.authUser(this.user)
+    this.getUserDetails()
 
-    .then(results => {
-      this.user = results
-      localStorage.setItem("email", this.user.email)
-      this.router.navigate(['/welcome'])
-    })
-
-    .catch(err => {
-      console.info('>>> error: ', err)
-    })
   }
 
 
