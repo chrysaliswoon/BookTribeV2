@@ -4,7 +4,7 @@
   <div class="cover__content">
     <div class="top-section">
       <div class="title">
-        <h1 class="title__text">{{username}}</h1>
+        <h1 class="title__text">{{username | titlecase}}</h1>
         <div class="title__details">
           <p><a href="https://www.behance.net/gallery/48387413/Magazine-Layout">{{email}}</a></p>
           <p>{{myDate | date: 'shortDate' }}</p>      
@@ -33,7 +33,7 @@
       
       <div class="headline">
         <div class="line line--horizontal line--left"></div>
-        <h2 class="boxed-headline" style="color: white;">
+        <h2 class="boxed-headline" style="color: black;">
           Profile Details</h2>
         <div class="line line--horizontal line--right"></div>
       </div>
@@ -43,27 +43,27 @@
 
       <div class="spacer"></div>
       <div class="content-preview content-preview--left content-preview--top">
-        <h3 class="content-preview__title" style="color: white;">Personal Details</h3>
-        <p class="content-preview__excerpt">First Name: {{firstName | titlecase}}</p>
-        <p class="content-preview__excerpt">Last Name: {{lastName | titlecase}}</p>
+        <h3 class="content-preview__title" style="color: black;">Personal Details</h3>
+        <p class="content-preview__excerpt" style="color: black;">First Name: {{firstName | titlecase}}</p>
+        <p class="content-preview__excerpt" style="color: black;">Last Name: {{lastName | titlecase}}</p>
 
       </div>
 
       <div class="content-preview  content-preview--right content-preview--top">
-        <h3 class="content-preview__title" style="color: white;">Tribe Members</h3>
-        <p class="content-preview__excerpt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi provident vel, architecto numquam nemo repellat.</p>
+        <h3 class="content-preview__title" style="color: black;">Tribe Members</h3>
+        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi provident vel, architecto numquam nemo repellat.</p>
       </div>
       <div class="spacer"></div>
       <div class="spacer"></div>
 
       <div class="content-preview content-preview--left content-preview--bottom">
-        <h3 class="content-preview__title" style="color: white;">Favourite Quote</h3>
-        <p class="content-preview__excerpt">Doloremque, totam blanditiis itaque ipsam commodi atque, vero, laborum eos quaerat nostrum deleniti laboriosam debitis.</p>
+        <h3 class="content-preview__title" style="color: black;">Favourite Quote</h3>
+        <p class="content-preview__excerpt" style="color: black;">Doloremque, totam blanditiis itaque ipsam commodi atque, vero, laborum eos quaerat nostrum deleniti laboriosam debitis.</p>
       </div>
 
       <div class="content-preview content-preview--right content-preview--bottom">
-        <h3 class="content-preview__title" style="color: white;">Currently Reading</h3>
-        <p class="content-preview__excerpt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab pariatur eaque nihil tempora facere dicta mollitia impedit, nisi eius.</p>
+        <h3 class="content-preview__title" style="color: black;">Currently Reading</h3>
+        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab pariatur eaque nihil tempora facere dicta mollitia impedit, nisi eius.</p>
       </div>
     </div>  
 

@@ -45,6 +45,15 @@ public class UserService {
 
     }
 
+    public boolean updateUserDetails(String value, String email) {
+        
+        return userRepo.updateUserByEmail(value, email);
+    }
+
+    public boolean deleteUser(String email) throws Exception {
+        return userRepo.deleterUserByEmail(email);
+    }
+
 
 
     

@@ -29,7 +29,6 @@ public class UserRepository {
 
     }
 
-
     //? Creates a new user
     public Integer createUser(User user) throws Exception {
         return jdbcTemplate.update(SQL_INSERT_USER, user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
@@ -51,8 +50,27 @@ public class UserRepository {
         if (!rs.next())
             return Optional.empty();
         return Optional.of(User.create(rs));
-
     }
+
+    //? Update User
+    public boolean updateUserByEmail(String value, String email) {
+        
+        int added = jdbcTemplate.update(SQL_UPDATE_USER_FIRSTNAME, value, email);
+
+        return added > 0;
+    }
+
+
+    //? Delete User
+    public boolean deleterUserByEmail(String email) throws Exception {
+
+        int deleted = jdbcTemplate.update(SQL_DELETE_USER, email);
+
+        return deleted > 0;
+        
+    }
+
+
 
 
 

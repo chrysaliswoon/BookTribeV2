@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
 import { DatePipe } from '@angular/common';
@@ -9,7 +9,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./profile.component.scss'],
   providers: [DatePipe]
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit{
 
   user!: User
   username: any = '';
@@ -20,6 +20,10 @@ export class ProfileComponent {
   myDate = new Date();
 
   constructor(private userSvc: UserService){}
+
+  ngOnInit(): void {
+      this.getUserDetails()
+  }
 
   getUserDetails(){
     this.email = localStorage.getItem("email");

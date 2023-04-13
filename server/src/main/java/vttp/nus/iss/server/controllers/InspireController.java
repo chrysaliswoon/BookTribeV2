@@ -3,16 +3,16 @@ package vttp.nus.iss.server.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import jakarta.servlet.http.HttpSession;
 import vttp.nus.iss.server.models.Inspire;
-import vttp.nus.iss.server.models.User;
 import vttp.nus.iss.server.services.InspireService;
 
 @Controller
@@ -23,14 +23,21 @@ public class InspireController {
     @Autowired
     InspireService inspireSvc;
 
-    @GetMapping("/inspire")
-    public String getInspires(Model model, HttpSession session) {
+    @GetMapping("/poem")
+    @ResponseBody
+    public ResponseEntity<List<Inspire>> getPoem() {
+        
         List<Inspire> poem = inspireSvc.getPoem();
-        List<Inspire> quote = inspireSvc.getQuote();
 
-        Inspire inspireAPI = new Inspire();
-                
-        return "inspire";
+        return new ResponseEntity<List<Inspire>>(poem, HttpStatus.OK);
     }
     
+    @GetMapping("/quote")
+    @ResponseBody
+    public ResponseEntity<List<Inspire>> getQuote() {
+        
+        List<Inspire> quote = inspireSvc.getQuote();
+
+        return new ResponseEntity<List<Inspire>>(quote, HttpStatus.OK);
+    }
 }

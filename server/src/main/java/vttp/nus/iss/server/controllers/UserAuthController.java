@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -103,6 +105,30 @@ public class UserAuthController {
 
         return userDetails;
     }
+
+
+    // @PutMapping(path="/update/{email}")
+    // @ResponseBody
+    // public ResponseEntity<String> updateUserFirstName (MultiValueMap<String, String> form, @PathVariable String email) throws Exception {
+
+    //    String first_name = form.getFirst("firstName");
+        
+
+    //     userSvc.updateUserDetails(first_name, email);
+
+    //     return new ResponseEntity<String>("User has been updated!", HttpStatus.OK);
+
+    // }
+
+    @DeleteMapping(path="/delete/{email}")
+    @ResponseBody
+    public ResponseEntity<String> deleteUser (@PathVariable String email) throws Exception {
+
+        userSvc.deleteUser(email);
+        
+        return new ResponseEntity<String>("User has been deleted!", HttpStatus.OK);
+    }
+
 
 
 
