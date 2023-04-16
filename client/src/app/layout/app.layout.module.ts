@@ -19,6 +19,7 @@ import { AppProfileSidebarComponent } from './app.profilesidebar.component';
 import { AppMenuComponent } from './app.menu.component';
 import { AppMenuitemComponent } from './app.menuitem.component';
 import { RouterModule } from '@angular/router';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { RouterModule } from '@angular/router';
         TooltipModule,
         RippleModule,
         RouterModule,
-        AppConfigModule
+        AppConfigModule,
+        ButtonModule
     ]
 })
 export class AppLayoutModule { }

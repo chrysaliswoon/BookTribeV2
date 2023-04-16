@@ -1,5 +1,6 @@
 package vttp.nus.iss.server.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +105,16 @@ public class UserAuthController {
         System.out.println(">>> Getting User Details");
 
         return userDetails;
+    }
+
+    @GetMapping(path="users")
+    @ResponseBody
+    public List<User> getAllUsers() {
+        List<User> allUsers = userSvc.getAllUsers();
+
+        System.out.println(">>> Getting All Users in Database");
+
+        return allUsers;
     }
 
 

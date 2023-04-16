@@ -28,8 +28,8 @@ The application consists of a minimum of 2 logical parts:
 | ------------- | ------------- |
 | Use POST to handle either x-www-form-urlencoded and/or JSON and/or multipart payload | ✓ |
 | Making HTTP request to external RESTful API |  ✓ |
-| Parameterized Routes |  |
-| Query String |   |
+| Parameterized Routes | ✓ |
+| Query String | ✓  |
 | Support more than 1 user | ✓  |
 
 ## Database

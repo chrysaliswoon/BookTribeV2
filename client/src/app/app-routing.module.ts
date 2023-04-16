@@ -10,6 +10,7 @@ import { GoalsPageComponent } from './goals/goals-page/goals-page.component';
 import { TribePageComponent } from './tribe/tribe-page/tribe-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BillingComponent } from './billing/billing.component';
+import { BookListComponent } from './books/book-list/book-list.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
       {path: 'inspire', component: InspirePageComponent},
       {path: 'about', component: AboutPageComponent},
       {path: 'profile', component: ProfileComponent},
-      {path: 'billing', component: BillingComponent}
+      {path: 'billing', component: BillingComponent},
+      {path: 'search', component: BookListComponent}
 
     ]
   }

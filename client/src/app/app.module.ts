@@ -25,6 +25,7 @@ import { GoalsTaskListComponent } from './goals/goals-task-list/goals-task-list.
 import { TribePageComponent } from './tribe/tribe-page/tribe-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BillingComponent } from './billing/billing.component';
+import { BookListComponent } from './books/book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { BillingComponent } from './billing/billing.component';
     GoalsTaskListComponent,
     TribePageComponent,
     ProfileComponent,
-    BillingComponent
+    BillingComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,

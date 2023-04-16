@@ -1,6 +1,7 @@
 package vttp.nus.iss.server.services;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,13 @@ public class UserService {
 
         return userDetails;
 
+    }
+
+    public List<User> getAllUsers(){
+        List<User> allUsers = userRepo.getAllUsers();
+
+        return allUsers;
+        
     }
 
     public boolean updateUserDetails(String value, String email) {

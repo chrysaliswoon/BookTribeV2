@@ -21,7 +21,7 @@ import { TableModule } from 'primeng/table';
 import { RatingModule } from 'primeng/rating';
 import { DataViewModule } from 'primeng/dataview';
 import { MenuModule } from 'primeng/menu';
-
+import {CardModule} from 'primeng/card';
 
 const components: any [] = [
     CommonModule,
@@ -45,7 +45,10 @@ const components: any [] = [
     TableModule,
     RatingModule,
     DataViewModule,
-    MenuModule
+    MenuModule,
+    ButtonModule,
+    CardModule
+
 ]
 
 @NgModule({

@@ -10,6 +10,8 @@ import vttp.nus.iss.server.models.User;
 
 import static vttp.nus.iss.server.repository.Queries.*;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -51,6 +53,28 @@ public class UserRepository {
             return Optional.empty();
         return Optional.of(User.create(rs));
     }
+
+    //? Find all users
+    public List<User> getAllUsers() {
+
+        List<User> result = new LinkedList<>();
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_ALL_USERS);
+
+        while(rs.next()) {
+            User user = new User();
+            user.setUserId(rs.getInt("USER_ID"));
+            user.setUsername(rs.getString("USERNAME"));
+            user.setFirstName(rs.getString("FIRSTNAME"));
+            user.setLastName(rs.getString("LASTNAME"));
+            user.setEmail(rs.getString("EMAIL"));
+
+            result.add(user);
+        }
+
+        return result;
+        
+    }
+
 
     //? Update User
     public boolean updateUserByEmail(String value, String email) {
