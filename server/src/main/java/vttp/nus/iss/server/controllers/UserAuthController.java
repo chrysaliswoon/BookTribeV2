@@ -36,6 +36,7 @@ public class UserAuthController {
 
     @Autowired
     private EmailService mailSvc;
+    
 
 
     @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
@@ -98,7 +99,7 @@ public class UserAuthController {
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-        System.out.println(user.toJson().toString());
+        // System.out.println(user.toJson().toString());
         return new ResponseEntity<String>(user.userJson().toString(), HttpStatus.OK);
     }
 

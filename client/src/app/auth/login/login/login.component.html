@@ -19,9 +19,9 @@
         <div *ngIf="registerOptions">
             <div class="flex flex-column">
                 <button pButton pRipple type="button" icon="pi pi-google" label="Continue with Google"
-                    class="p-button-raised p-button-text w-full mb-4" [routerLink]="['/']"></button>
+                    class="p-button-raised p-button-text w-full mb-4" (click)="loginByGoogle()"></button>
                 <button pButton pRipple type="button" icon="pi pi-facebook" label="Continue with Facebook"
-                    class="p-button-raised p-button-text w-full mb-4" [routerLink]="['/']"></button>
+                    class="p-button-raised p-button-text w-full mb-4" (click)="loginByFacebook()"></button>
                 <button pButton pRipple type="button" icon="pi pi-envelope" label="Continue with Email"
                     class="p-button-raised p-button-text w-full mb-4" (click)="loginByEmail()"></button>
 
