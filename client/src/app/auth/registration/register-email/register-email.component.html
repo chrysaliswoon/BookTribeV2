@@ -1,0 +1,52 @@
+<form [formGroup]="registerForm" (submit)="processRegisterForm()">
+
+    <div class="flex flex-column">
+        <label for="email" class="block">Enter username</label>
+        <span class="p-input-icon-left w-full mb-4">
+            <i class="pi pi-user"></i>
+            <input id="username" type="text" pInputText class="w-full md:w-25rem" placeholder="johntan"
+                formControlName="username"> </span>
+
+        <label for="email" class="block">Enter first name</label>
+        <span class="p-input-icon-left w-full mb-4">
+            <i class="pi pi-user"></i>
+            <input id="firstName" type="text" pInputText class="w-full md:w-25rem" placeholder="John"
+                formControlName="firstName">
+        </span>
+
+        <label for="email" class="block">Enter last name</label>
+        <span class="p-input-icon-left w-full mb-4">
+            <i class="pi pi-user"></i>
+            <input id="lastName" type="text" pInputText class="w-full md:w-25rem" placeholder="Tan"
+                formControlName="lastName">
+        </span> <label for="email" class="block">Enter email address</label>
+        <span class="p-input-icon-left w-full mb-4">
+            <i class="pi pi-envelope"></i>
+            <input id="email" type="text" pInputText class="w-full md:w-25rem" placeholder="johntan@example.com"
+                formControlName="email">
+        </span>
+
+        <label for="password" class="block">Password</label>
+        <span class="mb-4">
+            <p-password styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{'width':'100%'}"
+                [inputStyle]="{'width':'100%'}" placeholder="******" [toggleMask]="true" formControlName="password">
+                <ng-template pTemplate="header">
+                    <h6>Password Strength</h6>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <p-divider></p-divider>
+                    <p class="p-mt-2">Suggestions</p>
+                    <ul class="p-pl-2 p-ml-2 p-mt-0" style="line-height: 1.5">
+                        <li>At least one lowercase</li>
+                        <li>At least one uppercase</li>
+                        <li>At least one numeric</li>
+                        <li>Minimum 8 characters</li>
+                    </ul>
+                </ng-template>
+            </p-password>
+        </span>
+
+        <button pButton pRipple type="submit" label="Continue"
+            class="p-button-raised p-button-text w-full mb-4"></button>
+    </div>
+</form>

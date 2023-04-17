@@ -11,11 +11,20 @@ import { TribePageComponent } from './tribe/tribe-page/tribe-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BillingComponent } from './billing/billing.component';
 import { BookListComponent } from './books/book-list/book-list.component';
+import { LandingPageComponent } from './landing/landing-page/landing-page.component';
+import { WelcomeComponent } from './landing/welcome/welcome.component';
+import { RegisterComponent } from './auth/registration/register/register.component';
 
 const routes: Routes = [
   {
-    path: '', component: LoginComponent,
+    path: '', component: LandingPageComponent,
+    children: [
+      {path: '', component: WelcomeComponent},
+      {path: 'about', component: AboutPageComponent},
+    ]
   },
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {
     path: 'welcome', component: LoginWelcomeComponent,
   },
@@ -26,7 +35,6 @@ const routes: Routes = [
       {path: 'goals', component: GoalsPageComponent},
       {path: 'tribe', component: TribePageComponent},
       {path: 'inspire', component: InspirePageComponent},
-      {path: 'about', component: AboutPageComponent},
       {path: 'profile', component: ProfileComponent},
       {path: 'billing', component: BillingComponent},
       {path: 'search', component: BookListComponent}

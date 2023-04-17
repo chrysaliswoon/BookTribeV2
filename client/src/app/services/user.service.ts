@@ -26,9 +26,17 @@ export class UserService {
 
 
     //? POST Method
-    createUser(user: User): Observable<Object> {
+    createUser(user: User): Observable<User> {
       const url = this.baseUrl + "signup"
-      return this.http.post<User>(url, user);
+      const qs = new HttpParams()
+      .set("username", user.username)
+      .set("firstName", user.firstName)
+      .set("lastName", user.lastName)
+      .set("email", user.email)
+      .set("password", user.password)
+      const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+
+      return this.http.post<User>(url, qs.toString(), {headers});
     }
 
     // addUser(user: User): Promise<any> {

@@ -26,6 +26,12 @@ import { TribePageComponent } from './tribe/tribe-page/tribe-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BillingComponent } from './billing/billing.component';
 import { BookListComponent } from './books/book-list/book-list.component';
+import { LandingPageComponent } from './landing/landing-page/landing-page.component';
+import { TopNavigationComponent } from './landing/top-navigation/top-navigation.component';
+import { WelcomeComponent } from './landing/welcome/welcome.component';
+import { HeroComponent } from './landing/hero/hero.component';
+import { RegisterComponent } from './auth/registration/register/register.component';
+import { RegisterEmailComponent } from './auth/registration/register-email/register-email.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +54,13 @@ import { BookListComponent } from './books/book-list/book-list.component';
     TribePageComponent,
     ProfileComponent,
     BillingComponent,
-    BookListComponent
+    BookListComponent,
+    LandingPageComponent,
+    TopNavigationComponent,
+    WelcomeComponent,
+    HeroComponent,
+    RegisterComponent,
+    RegisterEmailComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit{
 
   confirmed: boolean = false;
   registerOptions: boolean = true;
-  register:boolean = false;
+  email:boolean = false;
 
 	constructor(private fb: FormBuilder, private router: Router, private layoutService: LayoutService) {}
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit{
   loginByEmail() {
     
     this.registerOptions = false;
-    this.register = true;
+    this.email = true;
     this.title = "Continue with email";
 
   }
