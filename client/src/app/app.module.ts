@@ -15,10 +15,6 @@ import { InspireQuoteComponent } from './inspire/inspire-quote/inspire-quote.com
 import { InspirePoemComponent } from './inspire/inspire-poem/inspire-poem.component';
 import { InspirePageComponent } from './inspire/inspire-page/inspire-page.component';
 import { AboutPageComponent } from './about/about-page/about-page.component';
-import { AboutHabitsComponent } from './about/about-habits/about-habits.component';
-import { AboutInspireComponent } from './about/about-inspire/about-inspire.component';
-import { AboutFaqComponent } from './about/about-faq/about-faq.component';
-import { AboutContactComponent } from './about/about-contact/about-contact.component';
 import { GoalsPageComponent } from './goals/goals-page/goals-page.component';
 import { GoalsCreateTaskComponent } from './goals/goals-create-task/goals-create-task.component';
 import { GoalsTaskListComponent } from './goals/goals-task-list/goals-task-list.component';
@@ -34,6 +30,7 @@ import { RegisterComponent } from './auth/registration/register/register.compone
 import { RegisterEmailComponent } from './auth/registration/register-email/register-email.component';
 import { VerificationComponent } from './auth/verification/verification.component';
 import { BookshelfComponent } from './dashboard/bookshelf/bookshelf.component';
+import { GoogleMapComponent } from './about/google-map/google-map.component';
 
 @NgModule({
   declarations: [
@@ -46,10 +43,6 @@ import { BookshelfComponent } from './dashboard/bookshelf/bookshelf.component';
     InspirePoemComponent,
     InspirePageComponent,
     AboutPageComponent,
-    AboutHabitsComponent,
-    AboutInspireComponent,
-    AboutFaqComponent,
-    AboutContactComponent,
     GoalsPageComponent,
     GoalsCreateTaskComponent,
     GoalsTaskListComponent,
@@ -64,7 +57,8 @@ import { BookshelfComponent } from './dashboard/bookshelf/bookshelf.component';
     RegisterComponent,
     RegisterEmailComponent,
     VerificationComponent,
-    BookshelfComponent
+    BookshelfComponent,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
