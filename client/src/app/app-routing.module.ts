@@ -14,6 +14,7 @@ import { BookListComponent } from './books/book-list/book-list.component';
 import { LandingPageComponent } from './landing/landing-page/landing-page.component';
 import { WelcomeComponent } from './landing/welcome/welcome.component';
 import { RegisterComponent } from './auth/registration/register/register.component';
+import { VerificationComponent } from './auth/verification/verification.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,8 @@ const routes: Routes = [
   },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  { path: 'auth/verification', component: VerificationComponent },
+
   {
     path: 'welcome', component: LoginWelcomeComponent,
   },

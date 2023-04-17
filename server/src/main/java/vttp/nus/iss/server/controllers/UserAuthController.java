@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import vttp.nus.iss.server.models.SendGridEmail;
 import vttp.nus.iss.server.models.User;
+import vttp.nus.iss.server.services.EmailService;
 import vttp.nus.iss.server.services.UserService;
 
 
@@ -32,13 +34,16 @@ public class UserAuthController {
     @Autowired
     private UserService userSvc;
 
+    @Autowired
+    private EmailService mailSvc;
+
 
     @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
     public ResponseEntity<String> createUser(@RequestBody MultiValueMap<String, String> form) throws Exception {
 
         User user = new User();
-        // SendGridEmail verifyEmail = new SendGridEmail();
+        SendGridEmail verifyEmail = new SendGridEmail();
 
         String username = form.getFirst("username");
         String firstName = form.getFirst("firstName");
@@ -52,11 +57,11 @@ public class UserAuthController {
         user.setEmail(email);
         user.setPassword(password);
 
-        // verifyEmail.setFirst_name(firstName);
-        // verifyEmail.setLast_name(lastName);
-        // verifyEmail.setRecipient(email);
-        // verifyEmail.setSubject("Welcome to Worksheet Quest");
-        // verifyEmail.setContent("This is a test email");
+        verifyEmail.setFirst_name(firstName);
+        verifyEmail.setLast_name(lastName);
+        verifyEmail.setRecipient(email);
+        verifyEmail.setSubject("Welcome to the Tribe");
+        verifyEmail.setContent("This is a test email");
 
         Boolean profileExists = userSvc.createUser(user);
 
@@ -66,7 +71,7 @@ public class UserAuthController {
                 System.out.println(">>>> User already exists in Database");
 
             } else {
-                // mailSvc.sendVerificationEmail(verifyEmail);
+                mailSvc.sendVerificationEmail(verifyEmail);
             }
 
         } catch (Exception ex) {
