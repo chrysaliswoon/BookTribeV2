@@ -33,6 +33,7 @@ import { HeroComponent } from './landing/hero/hero.component';
 import { RegisterComponent } from './auth/registration/register/register.component';
 import { RegisterEmailComponent } from './auth/registration/register-email/register-email.component';
 import { VerificationComponent } from './auth/verification/verification.component';
+import { BookshelfComponent } from './dashboard/bookshelf/bookshelf.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { VerificationComponent } from './auth/verification/verification.componen
     HeroComponent,
     RegisterComponent,
     RegisterEmailComponent,
-    VerificationComponent
+    VerificationComponent,
+    BookshelfComponent
   ],
   imports: [
     BrowserModule,
