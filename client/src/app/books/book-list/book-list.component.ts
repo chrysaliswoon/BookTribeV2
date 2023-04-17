@@ -20,9 +20,7 @@ export class BookListComponent implements OnInit{
 
 
   ngOnInit(): void {
-    console.log(this.books)
-
-    this.books
+    this.getBooks
   }
 
   getBooks(bookName: String) {

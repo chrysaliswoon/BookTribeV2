@@ -1,29 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-tribe-page',
   templateUrl: './tribe-page.component.html',
   styleUrls: ['./tribe-page.component.scss']
 })
-export class TribePageComponent {
+export class TribePageComponent implements OnInit{
 
-  users =  [
-    {
-        name: 'Tanya',
-        image:'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg.jpg'
-    },
-    {
-        name: 'John',
-        image:'assets/demo/images/ecommerce/product-list/product-list-2-2.png'
-    },
-    {
-        name: 'Chrysalis',
-        image:'assets/demo/images/ecommerce/product-list/product-list-2-3.png'
-    },
-    {
-        name: 'Fero',
-        image:'assets/demo/images/ecommerce/product-list/product-list-2-4.png'
-    },
-];
+users!: User[];
+constructor(private router: Router, private userSvc: UserService) { }
+
+ngOnInit(): void {
+    this.getUsers()
+}
+
+getUsers() {
+    console.log("Data:")
+    this.userSvc.getAllUsers().subscribe(data => {
+        console.log(data)
+        this.users = data
+    })
+}
 
 }

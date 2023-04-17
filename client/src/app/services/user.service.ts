@@ -24,6 +24,11 @@ export class UserService {
       return this.http.get<User>(url);
     }
 
+    getAllUsers(): Observable<User[]> {
+      const url = this.baseUrl + "users"
+      return this.http.get<User[]>(url);
+    }
+
     //? POST Method
     createUser(user: User): Observable<User> {
       const url = this.baseUrl + "signup"
@@ -37,6 +42,8 @@ export class UserService {
 
       return this.http.post<User>(url, qs.toString(), {headers});
     }
+
+
 
 
 }
