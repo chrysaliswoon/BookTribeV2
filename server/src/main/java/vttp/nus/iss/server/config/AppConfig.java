@@ -18,34 +18,34 @@ import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
 @Configuration
 public class AppConfig {
 
-    // // ? REDIS
-    // @Value("${spring.redis.host}")
-    // private String redistHost;
+    // ? REDIS
+    @Value("${spring.redis.host}")
+    private String redistHost;
 
-    // @Value("${spring.redis.port}")
-    // private int redisPort;
+    @Value("${spring.redis.port}")
+    private int redisPort;
 
-    // @Value("${spring.redis.database}")
-    // private int redisDatabase;
+    @Value("${spring.redis.database}")
+    private int redisDatabase;
 
-    // @Bean("quote")
-    // public RedisTemplate<String, String> createRedisTemplate() {
-    //     final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redisHost, redisPort);
-    //     config.setDatabase(redisDatabase);
+    @Bean("redis")
+    public RedisTemplate<String, String> createRedisTemplate() {
+        final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(redistHost, redisPort);
+        config.setDatabase(redisDatabase);
 
-    //     final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder()
-    //             .build();
-    //     final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);
-    //     jedisFac.afterPropertiesSet();
+        final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder()
+                .build();
+        final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);
+        jedisFac.afterPropertiesSet();
 
-    //     final RedisTemplate<String, String> template = new RedisTemplate<>();
-    //     template.setConnectionFactory(jedisFac);
-    //     template.setKeySerializer(new StringRedisSerializer());
-    //     template.setValueSerializer(new StringRedisSerializer());
-    //     template.setHashKeySerializer(new StringRedisSerializer());
-    //     template.setHashValueSerializer(new StringRedisSerializer());
-    //     return template;
-    // }
+        final RedisTemplate<String, String> template = new RedisTemplate<>();
+        template.setConnectionFactory(jedisFac);
+        template.setKeySerializer(new StringRedisSerializer());
+        template.setValueSerializer(new StringRedisSerializer());
+        template.setHashKeySerializer(new StringRedisSerializer());
+        template.setHashValueSerializer(new StringRedisSerializer());
+        return template;
+    }
 
     // // ? AMAZONs3
     // @Value("${spaces.secret.key}")

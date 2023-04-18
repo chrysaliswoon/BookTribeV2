@@ -35,7 +35,7 @@ public class InspireController {
     @GetMapping("/quote")
     @ResponseBody
     public ResponseEntity<List<Inspire>> getQuote() {
-        
+
         List<Inspire> quote = inspireSvc.getQuote();
 
         return new ResponseEntity<List<Inspire>>(quote, HttpStatus.OK);

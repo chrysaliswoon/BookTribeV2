@@ -5,7 +5,9 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,9 +18,13 @@ import jakarta.json.JsonArray;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 import vttp.nus.iss.server.models.Inspire;
+import vttp.nus.iss.server.repository.InspireRepository;
 
 @Service
 public class InspireService {
+
+    @Autowired
+    private InspireRepository inspireRepo;
 
     private static final String poemAPI = "https://poetrydb.org/random";
     private static final String InspireAPI = "https://api.quotable.io/random";
@@ -112,7 +118,10 @@ public class InspireService {
         String author = apiResult.getString("author");
         String content = apiResult.getString("content");
         JsonArray tags = apiResult.getJsonArray("tags");
+        System.out.println(author);
 
+        inspireRepo.save(author, payload);
+        
         quoteList.add(Inspire.createQuote(author, content, tags));
 
         return quoteList;

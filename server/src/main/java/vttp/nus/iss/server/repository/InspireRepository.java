@@ -13,24 +13,24 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class InspireRepository {
 
-    // @Value("${quotes.cache.duration}")
-    // private Long cacheTime;
+    @Value("${quotes.cache.duration}")
+    private Long cacheTime;
 
-    // @Autowired
-    // @Qualifier("redis")
-    // private RedisTemplate<String, String> template;
+    @Autowired
+    @Qualifier("redis")
+    private RedisTemplate<String, String> template;
 
-    // public void save(String author, String payload) {
-    //     ValueOperations<String, String> valueOp = template.opsForValue();
-    //     valueOp.set(author, payload, Duration.ofMinutes(cacheTime));
-    // }
+    public void save(String author, String payload) {
+        ValueOperations<String, String> valueOp = template.opsForValue();
+        valueOp.set(author, payload, Duration.ofMinutes(cacheTime));
+    }
 
-    // public Optional<String> get(String author) {
-    //     ValueOperations<String, String> valueOp = template.opsForValue();
-    //     String value = valueOp.get(author);
-    //     if (null == value)
-    //         return Optional.empty();
-    //     return Optional.of(value);
-    // }
+    public Optional<String> get(String author) {
+        ValueOperations<String, String> valueOp = template.opsForValue();
+        String value = valueOp.get(author);
+        if (null == value)
+            return Optional.empty();
+        return Optional.of(value);
+    }
     
 }
