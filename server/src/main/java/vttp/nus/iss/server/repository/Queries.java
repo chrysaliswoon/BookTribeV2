@@ -2,7 +2,7 @@ package vttp.nus.iss.server.repository;
 
 public interface Queries {
 
-    //? USER QUERIES
+    //////// USER QUERIES //////// 
     //? CREATE
     public static String SQL_INSERT_USER = "INSERT INTO users(username, firstName, lastName, email, password) values(?, ?, ?, ?, sha2(?, 256))";
 
@@ -18,8 +18,25 @@ public interface Queries {
     //? DELETE
     public static String SQL_DELETE_USER = "DELETE FROM users WHERE email=?";
 
-    //? BOOKSHELF QUERIES
+    //////// BOOKSHELF QUERIES //////// 
     //? CREATE
-    public static String SQL_INSERT_BOOK = "INSERT INTO bookshelf(BOOK_ID, USER_ID) values(?, ?)";
+    public static String SQL_INSERT_BOOK = "INSERT INTO bookshelf(USER_ID, BOOK_ID, TITLE, SUBTITLE, AUTHORS, CATEGORIES, IMAGEURL) values( ?, ?, ?, ?, ?, ?, ?)";
     
+    //? READ
+    public static String SQL_FIND_ALL_BOOKS_BY_USER = "SELECT * FROM bookshelf where user_id = ?";
+
+    //? DELETE
+    public static String SQL_DELETE_BOOKS_BY_ID = "DELETE FROM bookshelf where book_id = ? AND user_id = ?";
+
+
+    //////// REVIEWS QUERIES //////// 
+    //? CREATE
+    public static String SQL_INSERT_REVIEW = "";
+
+
+    //////// TASK ///////
+    //? CREATE
+    public static String SQL_INSERT_TASK = "";
+
+
 }

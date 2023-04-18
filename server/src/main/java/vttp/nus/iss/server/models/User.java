@@ -13,9 +13,14 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private String imageId;
+    private String imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
     private String role;
     private String verificationCode;
     private boolean verified;
+
+    
+    
 
     public String getRole() {
         return role;
@@ -98,6 +103,18 @@ public class User {
         user.setEmail(rs.getString("email"));
         user.setPassword(rs.getString("password"));
         return user;
+    }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+    public String getImageId() {
+        return imageId;
+    }
+    public void setImageId(String imageId) {
+        this.imageId = imageId;
     }
 
     
