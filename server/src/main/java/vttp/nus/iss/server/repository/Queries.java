@@ -17,5 +17,9 @@ public interface Queries {
 
     //? DELETE
     public static String SQL_DELETE_USER = "DELETE FROM users WHERE email=?";
+
+    //? BOOKSHELF QUERIES
+    //? CREATE
+    public static String SQL_INSERT_BOOK = "INSERT INTO bookshelf(BOOK_ID, USER_ID) values(?, ?)";
     
 }

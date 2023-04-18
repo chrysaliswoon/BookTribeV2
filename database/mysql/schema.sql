@@ -6,7 +6,7 @@ use railway;
 
 -- Users Table --
 CREATE TABLE  `users` (
- `USER_ID` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
+ `USER_ID` int NOT NULL AUTO_INCREMENT UNIQUE,
  `USERNAME` varchar(128) NOT NULL UNIQUE,
  `FIRSTNAME` varchar(128) not null,
  `LASTNAME` varchar(128) not null,
@@ -20,8 +20,8 @@ CREATE TABLE  `users` (
 
 -- Bookshelf Table --
 CREATE TABLE  `bookshelf` (
- `BOOK_ID` int(10) NOT NULL AUTO_INCREMENT UNIQUE,
- `USER_ID` int(10) NOT NULL,
+ `BOOK_ID` int NOT NULL AUTO_INCREMENT UNIQUE,
+ `USER_ID` int NOT NULL,
  `TITLE` varchar(128),
  `SUBTITLE` varchar(128),
  `AUTHORS` varchar(128),

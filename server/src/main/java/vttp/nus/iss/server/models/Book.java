@@ -16,6 +16,7 @@ public class Book {
     private String purchaseDate;
     private String description;
     private String imgUrl;
+    
     public String getId() {
         return id;
     }

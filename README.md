@@ -36,9 +36,8 @@ The application consists of a minimum of 2 logical parts:
 | Requirements  | Fulfilled? |
 | ------------- | ------------- |
 | Use MySQL | ✓ |
-| Modeling data relationship: 1 to 1, 1 to Many (User Account, Bookshelf) |  |
+| Modeling data relationship: 1 to 1, 1 to Many (User Account, Bookshelf, Todo List) | ✓ |
 | Demonstrate data integrity and consistency when updating multiple tables | ✓ |
-| Use another database - MongoDB (User Profile, ToDo List, Followers)  |  |
 | Use another database - Amazon S3 Bucket (Profile Pictures) |  |
 | Use another database - Redis (Cache) |  |
 
@@ -46,8 +45,8 @@ The application consists of a minimum of 2 logical parts:
 ## Deployment
 | Requirements  | Fulfilled? |
 | ------------- | ------------- |
-| Publicly accessible |   |
-| Deployed to Railway |   |
+| Publicly accessible | ✓ |
+| Deployed to Railway | ✓ |
 
 
 ## Additional Requirements
@@ -58,7 +57,7 @@ SpringBoot Backend| Use Spring Boot security with JWT to authenticate and author
 SpringBoot Backend| Sending email - Uses SendGrid | ✓ |
 Angular Frontend | Use map eg Google Map - PrimeNG GMap | ✓ |
 Angular Frontend | Use UI component framework - PrimeNG | ✓ |
-Deployment | Apply a domain name and configure your application to use the domain name|  |
+Deployment | Apply a domain name and configure your application to use the domain name| ✓ |
 
 ## APIs
 
