@@ -1,5 +1,7 @@
 package vttp.nus.iss.server.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +14,20 @@ public class BookshelfService {
     @Autowired
     private BookshelfRepository bookshelfRepo;
 
-    // public boolean createBook(Bookshelf book) throws Exception {
+    public boolean createBook(Bookshelf book) throws Exception {
         
-    //     bookshelfRepo.createBook(book);
+        bookshelfRepo.createBook(book);
+        System.out.println(">>> Added book to the shelf database");
 
-    //     return true;
-    // }
+        return true;
+    }
+
+    public List<Bookshelf> getUserBooks(String email) {
+        List<Bookshelf> allBooks = bookshelfRepo.getAllBooks(email);
+
+        return allBooks;
+
+    }
 
     
     

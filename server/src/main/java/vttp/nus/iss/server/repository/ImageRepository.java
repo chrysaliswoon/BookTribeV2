@@ -35,29 +35,29 @@ public class ImageRepository {
 	@Autowired
 	private AmazonS3 s3;
 
-	public boolean upload(User user, MultipartFile file) {
+	// public boolean upload(User user, MultipartFile file) {
 
-		Map<String, String> userData = new HashMap<>();
-		userData.put("name", user.getUsername());
+	// 	Map<String, String> userData = new HashMap<>();
+	// 	userData.put("name", user.getUsername());
 
-		ObjectMetadata metadata = new ObjectMetadata();
-		metadata.setContentType(file.getContentType());
-		metadata.setContentLength(file.getSize());
+	// 	ObjectMetadata metadata = new ObjectMetadata();
+	// 	metadata.setContentType(file.getContentType());
+	// 	metadata.setContentLength(file.getSize());
 
-		try {
-			PutObjectRequest putReq = new PutObjectRequest(spacesBucket
-					, user.getImageId(), file.getInputStream(), metadata);
-			putReq.withCannedAcl(CannedAccessControlList.PublicRead);
-			s3.putObject(putReq);
-		} catch (Exception ex) {
-			logger.log(Level.WARNING, "Put S3", ex);
-			return false;
-		}
+	// 	try {
+	// 		PutObjectRequest putReq = new PutObjectRequest(spacesBucket
+	// 				, user.getImageId(), file.getInputStream(), metadata);
+	// 		putReq.withCannedAcl(CannedAccessControlList.PublicRead);
+	// 		s3.putObject(putReq);
+	// 	} catch (Exception ex) {
+	// 		logger.log(Level.WARNING, "Put S3", ex);
+	// 		return false;
+	// 	}
 
-		String imageUrl = "https://%s.%s/%s"
-				.formatted(spacesBucket, spacesEndpointUrl, user.getImageId());
-		user.setImageUrl(imageUrl);
+	// 	String imageUrl = "https://%s.%s/%s"
+	// 			.formatted(spacesBucket, spacesEndpointUrl, user.getImageId());
+	// 	user.setImageUrl(imageUrl);
 
-		return true;
-    }
+	// 	return true;
+    // }
 }

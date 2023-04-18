@@ -48,27 +48,27 @@ public class AppConfig {
     }
 
     // // ? AMAZONs3
-    // @Value("${spaces.secret.key}")
-    // private String spacesSecretKey;
+    @Value("${spaces.secret.key}")
+    private String spacesSecretKey;
 
-    // @Value("${spaces.access.key}")
-    // private String spacesAccessKey;
+    @Value("${spaces.access.key}")
+    private String spacesAccessKey;
 
-    // @Value("${spaces.endpoint.url}")
-    // private String spacesEndpointUrl;
+    @Value("${spaces.endpoint.url}")
+    private String spacesEndpointUrl;
 
-    // @Value("${spaces.endpoint.region}")
-    // private String spacesRegion;
+    @Value("${spaces.endpoint.region}")
+    private String spacesRegion;
 
-    // @Bean
-    // public AmazonS3 createS3Client() {
-    //     BasicAWSCredentials cred = new BasicAWSCredentials(spacesAccessKey, spacesSecretKey);
-    //     EndpointConfiguration epConfig = new EndpointConfiguration(spacesEndpointUrl, spacesRegion);
+    @Bean
+    public AmazonS3 createS3Client() {
+        BasicAWSCredentials cred = new BasicAWSCredentials(spacesAccessKey, spacesSecretKey);
+        EndpointConfiguration epConfig = new EndpointConfiguration(spacesEndpointUrl, spacesRegion);
 
-    //     return AmazonS3ClientBuilder.standard()
-    //             .withEndpointConfiguration(epConfig)
-    //             .withCredentials(new AWSStaticCredentialsProvider(cred))
-    //             .build();
-    // }
+        return AmazonS3ClientBuilder.standard()
+                .withEndpointConfiguration(epConfig)
+                .withCredentials(new AWSStaticCredentialsProvider(cred))
+                .build();
+    }
 
 }

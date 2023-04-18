@@ -2,8 +2,12 @@ package vttp.nus.iss.server.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 import static vttp.nus.iss.server.repository.Queries.*;
+
+import java.util.LinkedList;
+import java.util.List;
 
 import vttp.nus.iss.server.models.Book;
 import vttp.nus.iss.server.models.Bookshelf;
@@ -15,9 +19,28 @@ public class BookshelfRepository {
     private JdbcTemplate jdbcTemplate;
     
     //? Creates a new book in the bookshelf for the user
-    // public Integer createBook(Bookshelf book) throws Exception {
-    //     return jdbcTemplate.update(SQL_INSERT_BOOK, book.getBookId(), book.getUserId());
-    // }
+    public Integer createBook(Bookshelf book) throws Exception {
+        return jdbcTemplate.update(SQL_INSERT_BOOK, book.getUserEmail(),book.getBookId(), book.getTitle(), book.getSubtitle(), book.getAuthors(), book.getCategories(), book.getImageUrl());
+    }
+
+    public List<Bookshelf> getAllBooks(String email) {
+        List<Bookshelf> result = new LinkedList<>();
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_ALL_BOOKS_BY_USER, email);
+
+        while(rs.next()) {
+            Bookshelf book = new Bookshelf();
+            book.setUserEmail(rs.getString("EMAIL"));
+            book.setBookId(rs.getString("BOOK_ID"));
+            book.setCategories(rs.getString("CATEGORIES"));
+            book.setAuthors(rs.getString("AUTHORS"));
+            book.setTitle(rs.getString("TITLE"));
+            book.setImageUrl(rs.getString("IMAGEURL"));
+
+            result.add(book);
+        }
+
+        return result;
+    }
 
     
 }

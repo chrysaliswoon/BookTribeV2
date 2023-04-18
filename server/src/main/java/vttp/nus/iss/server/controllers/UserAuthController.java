@@ -37,8 +37,6 @@ public class UserAuthController {
     @Autowired
     private EmailService mailSvc;
     
-
-
     @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
     @CrossOrigin(origins = "*")
