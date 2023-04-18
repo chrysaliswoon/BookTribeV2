@@ -4,7 +4,6 @@ export interface Book {
     subtitle: String
     authors: []
     categories: []
-    purchaseDate: String
     description: String
     imageUrl: String
 }

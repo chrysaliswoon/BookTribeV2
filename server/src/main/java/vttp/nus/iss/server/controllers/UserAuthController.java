@@ -131,8 +131,7 @@ public class UserAuthController {
     // public ResponseEntity<String> updateUserFirstName (MultiValueMap<String, String> form, @PathVariable String email) throws Exception {
 
     //    String first_name = form.getFirst("firstName");
-        
-
+    
     //     userSvc.updateUserDetails(first_name, email);
 
     //     return new ResponseEntity<String>("User has been updated!", HttpStatus.OK);
