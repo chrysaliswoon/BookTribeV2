@@ -35,12 +35,12 @@ The application consists of a minimum of 2 logical parts:
 ## Database
 | Requirements  | Fulfilled? |
 | ------------- | ------------- |
-| Use MySQL | ✓  |
-| Modeling data relationship: 1 to 1, 1 to Many | ✓  |
-| Demonstrate data integrity and consistency when updating multiple tables | ✓  |
-| Use another database - MongoDB(NoSQL) |   |
-| Use another database - Amazon S3 Bucket (Store Images) |   |
-| Use another database - Redis (Cache) |   |
+| Use MySQL | ✓ |
+| Modeling data relationship: 1 to 1, 1 to Many (User Account, Bookshelf) |  |
+| Demonstrate data integrity and consistency when updating multiple tables | ✓ |
+| Use another database - MongoDB (User Profile, ToDo List, Followers)  |  |
+| Use another database - Amazon S3 Bucket (Profile Pictures) |  |
+| Use another database - Redis (Cache) |  |
 
 
 ## Deployment

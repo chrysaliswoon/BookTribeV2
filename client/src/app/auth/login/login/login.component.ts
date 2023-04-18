@@ -45,10 +45,8 @@ export class LoginComponent implements OnInit{
     
   }
 
-  loginByFacebook() {
-  }
   loginByGoogle() {
-    this.router.navigate(['http://localhost:8080/oauth2/authorization/google'])
+    // this.router.navigate(['http://localhost:8080/oauth2/authorization/google'])
   }
   
 }

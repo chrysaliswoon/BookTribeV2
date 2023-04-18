@@ -28,8 +28,15 @@ export class LoginEmailComponent implements OnInit{
     })
   }
 
+  loginToAccount() {
+    this.userSvc.verifyUser(this.user).subscribe(data => {
+      this.user = data;
+    })
+  }
+
   getUserDetails() {
     this.user = this.loginForm.value;
+    this.loginToAccount()
     this.userSvc.getUser(this.user.email).subscribe(data =>{
       this.user = data;
       localStorage.setItem("username", this.user.username);

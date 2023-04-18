@@ -22,6 +22,7 @@ import { RatingModule } from 'primeng/rating';
 import { DataViewModule } from 'primeng/dataview';
 import { MenuModule } from 'primeng/menu';
 import {CardModule} from 'primeng/card';
+import {ConfirmPopupModule} from 'primeng/confirmpopup';
 
 const components: any [] = [
     CommonModule,
@@ -47,8 +48,8 @@ const components: any [] = [
     DataViewModule,
     MenuModule,
     ButtonModule,
-    CardModule
-
+    CardModule,
+    ConfirmPopupModule
 ]
 
 @NgModule({

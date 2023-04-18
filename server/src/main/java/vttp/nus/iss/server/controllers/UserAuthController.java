@@ -41,6 +41,7 @@ public class UserAuthController {
 
     @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> createUser(@RequestBody MultiValueMap<String, String> form) throws Exception {
 
         User user = new User();
@@ -84,6 +85,7 @@ public class UserAuthController {
 
     @PostMapping(path="/signin", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
+    @CrossOrigin(origins = "*")
     public ResponseEntity<String> authenticateUser(@RequestBody MultiValueMap<String, String> form) throws Exception{
         User user = new User();
         user.setEmail(form.getFirst("email"));

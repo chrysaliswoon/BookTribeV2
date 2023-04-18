@@ -5,16 +5,51 @@
     <div class="top-section">
       <div class="title">
         <h1 class="title__text">{{username | titlecase}}</h1>
-        <div class="title__details">
-          <p><a href="https://www.behance.net/gallery/48387413/Magazine-Layout">{{email}}</a></p>
-          <p>{{myDate | date: 'shortDate' }}</p>      
+      </div>
+      <form [formGroup]="updateProfile" (ngSubmit)="onSubmit()">
+      <div class="title__details">
+        <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Edit Profile"></p-button>
+        <p-dialog header="Edit Your Profile" [(visible)]="displayBasic" [style]="{width: '50vw'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="First Name">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="Last Name">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="p-inputgroup">
+                <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                <input type="text" pInputText placeholder="Password" formControlName="password">
+              </div>
+            </div>
+            <div class="col-12">
+              <p-fileUpload mode="basic" name="avatar" url="./upload.php" accept="image/*" [maxFileSize]="1000000"
+                styleClass="p-button-outlined p-button-plain" chooseLabel="Upload Image"></p-fileUpload>
+            </div>
+          </div>
+          <ng-template pTemplate="footer">
+            <p-button icon="pi pi-exclamation-triangle" type="submit" label="Delete" styleClass="p-button-text"></p-button>
+            <p-button icon="pi pi-user-edit" (click)="displayBasic=false" label="Update Profile" styleClass="p-button-text"></p-button>
+          </ng-template>
+        </p-dialog>
+        <div>
         </div>
       </div>
+      </form>
       <div class="top-section__content">
-
         <div class="content-preview">
           <h3 class="content-preview__title">Who Am I?</h3>
-          <p class="content-preview__excerpt">autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat ulla facilsilis at vero eros et accumsan et iusto.</p>
+          <p class="content-preview__excerpt">autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+            consequat, vel illum dolore eu feugiat ulla facilsilis at vero eros et accumsan et iusto.</p>
         </div>
 
         <div class="content-preview">
@@ -23,14 +58,18 @@
             <li><i class="pi pi-book"> Fantasy </i></li>
             <li><i class="pi pi-book"> Sci-Fi </i></li>
             <li><i class="pi pi-book"> Mystery </i></li>
-
           </ul>
-        </div>  
+        </div>
+
+        <div class="content-preview">
+          <p><a href="https://www.behance.net/gallery/48387413/Magazine-Layout">{{email}}</a></p>
+          <p><i class="pi pi-calendar"></i> {{myDate | date: 'shortDate' }}</p>
+        </div>
       </div>
     </div>
 
     <div class="lower-section">
-      
+
       <div class="headline">
         <div class="line line--horizontal line--left"></div>
         <h2 class="boxed-headline" style="color: black;">
@@ -51,21 +90,24 @@
 
       <div class="content-preview  content-preview--right content-preview--top">
         <h3 class="content-preview__title" style="color: black;">Tribe Members</h3>
-        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi provident vel, architecto numquam nemo repellat.</p>
+        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Sequi provident vel, architecto numquam nemo repellat.</p>
       </div>
       <div class="spacer"></div>
       <div class="spacer"></div>
 
       <div class="content-preview content-preview--left content-preview--bottom">
         <h3 class="content-preview__title" style="color: black;">Favourite Quote</h3>
-        <p class="content-preview__excerpt" style="color: black;">Doloremque, totam blanditiis itaque ipsam commodi atque, vero, laborum eos quaerat nostrum deleniti laboriosam debitis.</p>
+        <p class="content-preview__excerpt" style="color: black;">Doloremque, totam blanditiis itaque ipsam commodi
+          atque, vero, laborum eos quaerat nostrum deleniti laboriosam debitis.</p>
       </div>
 
       <div class="content-preview content-preview--right content-preview--bottom">
         <h3 class="content-preview__title" style="color: black;">Currently Reading</h3>
-        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab pariatur eaque nihil tempora facere dicta mollitia impedit, nisi eius.</p>
+        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing
+          elit. Ab pariatur eaque nihil tempora facere dicta mollitia impedit, nisi eius.</p>
       </div>
-    </div>  
+    </div>
 
   </div>
 

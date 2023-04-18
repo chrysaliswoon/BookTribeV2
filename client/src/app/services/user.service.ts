@@ -43,6 +43,24 @@ export class UserService {
       return this.http.post<User>(url, qs.toString(), {headers});
     }
 
+    verifyUser(user: User): Observable<User> {
+      const url = this.baseUrl + "signin"
+      const qs = new HttpParams()
+      
+      .set("email", user.email)
+      .set("password", user.password)
+      const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+
+      return this.http.post<User>(url, qs.toString(), {headers});
+
+    }
+
+    deleteUser(email: String): Observable<User> {
+      const url = this.baseUrl + "delete/" + email
+      console.log(url)
+      return this.http.delete<User>(url);
+    }
+
 
 
 
