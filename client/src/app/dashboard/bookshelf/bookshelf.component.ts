@@ -1,35 +1,43 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Shelf } from 'src/app/models/shelf';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
   selector: 'app-bookshelf',
   templateUrl: './bookshelf.component.html',
   styleUrls: ['./bookshelf.component.scss']
 })
-export class BookshelfComponent implements OnInit{
+export class BookshelfComponent implements OnInit {
+
 
   username: any = '';
+  email: any = '';
+  shelf!: Shelf[];
+
+  constructor(private router: Router,private shelfSvc: BookService) { }
 
   ngOnInit(): void {
+    // this.bookId = this.route.snapshot.params['id']
     this.username = localStorage.getItem("username");
+    this.email = localStorage.getItem("email");
+    this.getBooks()
   }
 
-  books =  [
-    {
-        color: 'Bluegray',
-        image:'assets/demo/images/ecommerce/product-list/product-list-2-1.png'
-    },
-    {
-        color: 'Indigo',
-        image:'assets/demo/images/ecommerce/product-list/product-list-2-2.png'
-    },
-    {
-        color: 'Purple',
-        image:'assets/demo/images/ecommerce/product-list/product-list-2-3.png'
-    },
-    {
-        color: 'Cyan',
-        image:'assets/demo/images/ecommerce/product-list/product-list-2-4.png'
-    },
-];
+  getBooks() {
+    this.shelfSvc.getUserBooks(this.email).subscribe(data => {
+      this.shelf = data
+    })
+  }
+
+  deleteBook(id:String) {
+    console.log(this.email)
+    this.shelfSvc.deleteBook(id, this.email).subscribe(data => {
+      console.log(data);
+    })
+    this.router.navigate(['/dashboard'])
+
+  }
+
 
 }

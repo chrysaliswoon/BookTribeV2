@@ -58,6 +58,7 @@ export class UserService {
     deleteUser(email: String): Observable<User> {
       const url = this.baseUrl + "delete/" + email
       console.log(url)
+
       return this.http.delete<User>(url);
     }
 

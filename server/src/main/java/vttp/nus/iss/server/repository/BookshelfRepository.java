@@ -9,7 +9,6 @@ import static vttp.nus.iss.server.repository.Queries.*;
 import java.util.LinkedList;
 import java.util.List;
 
-import vttp.nus.iss.server.models.Book;
 import vttp.nus.iss.server.models.Bookshelf;
 
 @Repository
@@ -41,6 +40,17 @@ public class BookshelfRepository {
 
         return result;
     }
+
+        //? Delete Book
+        public boolean deleteBookById(String bookId, String email) throws Exception {
+
+            int deleted = jdbcTemplate.update(SQL_DELETE_BOOKS_BY_ID, bookId, email);
+
+            System.out.println("Book has been deleted");
+    
+            return deleted > 0;
+            
+        }
 
     
 }

@@ -26,7 +26,7 @@ public interface Queries {
     public static String SQL_FIND_ALL_BOOKS_BY_USER = "SELECT * FROM bookshelf where email = ?";
 
     // ? DELETE
-    public static String SQL_DELETE_BOOKS_BY_ID = "DELETE FROM bookshelf where book_id = ? AND user_id = ?";
+    public static String SQL_DELETE_BOOKS_BY_ID = "DELETE FROM bookshelf where book_id = ? AND email = ?";
 
     //////// REVIEWS QUERIES ////////
     // ? CREATE

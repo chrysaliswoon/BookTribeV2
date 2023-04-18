@@ -118,9 +118,9 @@ public class InspireService {
         String author = apiResult.getString("author");
         String content = apiResult.getString("content");
         JsonArray tags = apiResult.getJsonArray("tags");
-        System.out.println(author);
+        // System.out.println(author);
 
-        inspireRepo.save(author, payload);
+        // inspireRepo.save(author, payload);
         
         quoteList.add(Inspire.createQuote(author, content, tags));
 

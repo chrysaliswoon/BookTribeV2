@@ -29,6 +29,10 @@ public class BookshelfService {
 
     }
 
+    public boolean deleteBook(String bookId, String email) throws Exception {
+        return bookshelfRepo.deleteBookById(bookId, email);
+    }
+
     
     
 }

@@ -21,8 +21,6 @@ export class ProfileComponent implements OnInit {
   firstName: any = '';
   lastName: any = '';
   displayBasic: boolean = false;
-  // uploadedFiles: any[] = [];
-
   myDate = new Date();
 
   constructor(private router: Router, private fb: FormBuilder, private messageService: MessageService, private confirmationService: ConfirmationService, private primengConfig: PrimeNGConfig, private userSvc: UserService) { }

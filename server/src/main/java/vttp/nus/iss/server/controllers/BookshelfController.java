@@ -3,6 +3,7 @@ package vttp.nus.iss.server.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,6 +71,16 @@ public class BookshelfController {
         return allBooks;
 
     }
+    
+    @DeleteMapping(path="/delete/{bookId}/{email}")
+    @ResponseBody
+    public ResponseEntity<String> deleteUser (@PathVariable String bookId, @PathVariable String email) throws Exception {
+
+        shelfSvc.deleteBook(bookId, email);
+        
+        return new ResponseEntity<String>("Book has been removed from Shelf!", HttpStatus.OK);
+    }
+
 
     
     

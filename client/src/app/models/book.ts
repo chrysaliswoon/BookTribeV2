@@ -8,7 +8,7 @@ export interface Book {
     imageUrl: String
 }
 
-export interface Author {
-    string: String
-}
+// export interface Author {
+//     string: String
+// }
 

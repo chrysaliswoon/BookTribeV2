@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { environment } from "../environment";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Book } from "../models/book";
+import { Shelf } from "../models/shelf";
 
 const BACKEND = environment.serverUrl
 
@@ -18,6 +19,18 @@ export class BookService {
         const url = this.baseURL + "search"
         return this.http.get<Book[]>(url, {params: params}); 
     }
+
+    getUserBooks(email: String): Observable<Shelf[]> {
+        const url = this.baseURL + "shelf/" + email
+        return this.http.get<Shelf[]>(url);
+    }
+
+    deleteBook(bookId: String, email: String): Observable<Shelf> {
+        const url = this.baseURL + "delete/" + bookId + "/" + email
+        console.log(url)
+
+        return this.http.delete<Shelf>(url);
+      }
 
 }
 

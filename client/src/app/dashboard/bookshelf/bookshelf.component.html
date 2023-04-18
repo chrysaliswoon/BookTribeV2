@@ -1,16 +1,28 @@
-<div class="surface-section px-4 py-8 md:px-6 lg:px-8 mt-6 border-1 surface-border border-round">
-    <div class="text-900 font-medium text-4xl mb-4 text-center pb-8">{{username | titlecase}}'s Bookshelf</div>
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8 mt-6 border-1 surface-border border-round" *ngFor="let book of shelf">
+    <div class="text-900 font-medium text-4xl mb-4 text-center pb-8" >{{username | titlecase}}'s Bookshelf</div>
     <div class="grid -mt-3 -ml-3 -mr-3">
-        <div class="col-12 md:col-6 lg:col-3 mb-5 lg:mb-0" *ngFor="let book of books">
-            <div class="mb-3 relative">
-                <img [src]="book.image" class="w-full" />
-                <div>
-                    <button pButton pRipple type="button" label="Review" class="p-button-raised"></button>
-                    <button pButton pRipple type="button" label="Remove" class="p-button-raised p-button-secondary"></button>
+        <div class="col-12 md:col-6 lg:col-4" *ngFor="let book of shelf">
+            <div class="p-2">
+                <div class="shadow-2 p-4 surface-card border-round">
+                    <div class="relative mb-3">
+                        <span class="surface-card text-900 shadow-2 px-3 py-2 absolute" style="border-radius: 1.5rem; left: 1rem; top: 1rem">{{book.categories}}</span>
+                        <img src={{book.imageUrl}} class="w-full" />
+                    </div>
+                    <div class="flex justify-content-between align-items-center mb-3">
+                        <span class="text-900 font-medium text-xl">{{book.title}}</span>
+                        <span>
+                            <i class="pi pi-star-fill text-yellow-500 mr-1"></i>
+                            <span class="font-medium">5.0</span>
+                        </span>
+                    </div>
+                    <p class="mt-0 mb-3 text-700 line-height-3">
+                        {{book.authors}}
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <button pButton pRipple label="Write a Review" icon="pi pi-pencil"></button>
+                        <button pButton pRipple label="Remove" icon="pi pi-times" class="p-button-danger" (click)="deleteBook(book.bookId)" ></button>
+                    </div>
                 </div>
-            </div>
-            <div class="flex flex-column align-items-center">
-                <span class="text-xl text-900 font-medium mb-3">book Name</span>
             </div>
         </div>
     </div>
