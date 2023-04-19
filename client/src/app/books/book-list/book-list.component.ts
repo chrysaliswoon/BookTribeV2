@@ -44,11 +44,13 @@ addBook(id: string, title: string, url: string) {
   const email = localStorage.getItem("email");
 
   this.bookSvc.saveBooks(email, id, title, url).subscribe(data => {
-
-    console.log(data)
+    this.router.navigate(['dashboard']);  
   })
+}
 
-  
+bookDetails(id: string) {
+
+  this.router.navigate(['dashboard/search', id]);  
 
 }
 

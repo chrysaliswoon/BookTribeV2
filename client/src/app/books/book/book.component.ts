@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { Shelf } from 'src/app/models/shelf';
 import { BookService } from 'src/app/services/book.service';
@@ -11,41 +11,46 @@ import { BookService } from 'src/app/services/book.service';
 })
 export class BookComponent implements OnInit {
 
-
+  description: string
+  id: string
   books!: Book[];
-  bookName: String = '';
-  shelf!: Shelf
 
-  constructor(private router: Router, private bookSvc: BookService) { }
 
+  constructor(private router: Router, private bookSvc: BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getBooks
+
+    this.id = this.route.snapshot.params['id'];
+    this.getBook(this.id);
+    
   }
 
-  getBooks(bookName: String) {
-    this.bookSvc.getBooks(bookName).subscribe(data => {
-       this.books = data
-       console.log(this.books.forEach);
-  });
+  getBook(id: string) {
+    this.bookSvc.getBookById(id).subscribe(data => {
+      // console.log(data)
+      this.books = data;
+    })
   }
 
-searchBooks() {
-    this.getBooks(this.bookName)
-    this.router.navigate(
-        ['dashboard/search'],
-        {queryParams: {book: this.bookName}}
-    );
-}
+  addBook(id: string, title: string, url: string) {
 
-addBook(id: string, title: string, url: string) {
+    console.log(id)
+    console.log(title)
+    console.log(url)
 
-  const email = localStorage.getItem("email");
 
-  this.bookSvc.saveBooks(email, id, title, url).subscribe(data => {
+    const email = localStorage.getItem("email");
+  
+    this.bookSvc.saveBooks(email, id, title, url).subscribe(data => {
+      this.router.navigate(['dashboard']);  
+    })
+  }
 
-    console.log(data)
-  })
-}
+  searchBook() {
+    this.router.navigate(['dashboard/search']);  
+
+  }
+
+
 
 }

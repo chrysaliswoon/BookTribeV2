@@ -20,6 +20,11 @@ export class BookService {
         return this.http.get<Book[]>(url, {params: params}); 
     }
 
+    getBookById(id: string): Observable<Book[]> {
+        const url = this.baseURL + "search/" + id
+        return this.http.get<Book[]>(url); 
+    }
+
     getUserBooks(email: string): Observable<Shelf[]> {
         const url = this.baseURL + "shelf/" + email
         return this.http.get<Shelf[]>(url);
@@ -38,10 +43,7 @@ export class BookService {
         .set("title", title)
         .set("imageUrl", imgUrl)
 
-        const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-
-        console.log(url)
-        
+        const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')        
         return this.http.post<Shelf>(url, qs.toString(), {headers});
 
     }

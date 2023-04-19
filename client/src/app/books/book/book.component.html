@@ -8,23 +8,23 @@
           </header>
           <article>
             <h2 class="chapter-title">{{b.title}}</h2>
-            <img data-th-src="@{${d.imgUrl}}" alt="${d.title}" />
-            <dl>
+            <img src="{{b.imgUrl}}" alt={{b.title}} />
+            <dl >
               <dt>Categories: </dt>
-              <dd>
-                <em data-th-text="${d.categories}"></em>
+              <dd *ngFor="let category of b.categories">
+                <em>{{category['string']}}</em>
               </dd>
               <br>
               <div class="bk-info">
                 <form>
                   <input type="hidden" name="favourite" data-th-value="${d.id}">
-                  <button pButton pRipple type="button" icon="pi pi-bookmark" label="Favourite" class="p-button-raised" (click)="addBook(b.id, b.title, b.imgUrl)" ></button>
-                  <button pButton pRipple type="button" icon="pi pi-search" label="Search" class="p-button-raised"></button>
+                  <button pButton pRipple type="button" icon="pi pi-bookmark" label="Favourite" class="p-button-raised" (click)="addBook(b.id, b.title, b.imgUrl)"></button>
+                  <button pButton pRipple type="button" icon="pi pi-search" label="Search" class="p-button-raised" (click)="searchBook()"></button>
                 </form>
               </div>
             </dl>
             <h3 class="sub-title"></h3>
-            <p data-th-utext="${d.description}"></p>
+            <p>{{b.description}}</p>
 
           </article>
 
