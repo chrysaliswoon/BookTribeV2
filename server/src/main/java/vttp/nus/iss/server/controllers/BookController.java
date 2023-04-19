@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -26,6 +27,13 @@ public class BookController {
     @GetMapping(path="/search")
     public ResponseEntity <List<Book>> getBookResults(@RequestParam String book) { 
         List<Book> bookResults = bookSvc.exploreBooks(book);
+
+        return new ResponseEntity<List<Book>>(bookResults, HttpStatus.OK);
+    }
+
+    @GetMapping(path="/search/{id}")
+    public ResponseEntity <List<Book>> getBook(@PathVariable String id) { 
+        List<Book> bookResults = bookSvc.bookDetails(id);
 
         return new ResponseEntity<List<Book>>(bookResults, HttpStatus.OK);
     }

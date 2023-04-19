@@ -1,8 +1,8 @@
 export interface Shelf {
-    bookId: String
-    email: String
-    title: String
-    authors: String
-    categories: String
-    imageUrl: String
+    bookId: string
+    email: string
+    title: string
+    authors: string
+    categories: string
+    imageUrl: string
 }

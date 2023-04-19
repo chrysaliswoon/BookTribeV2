@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import vttp.nus.iss.server.models.Bookshelf;
@@ -29,35 +30,37 @@ public class BookshelfController {
     @Autowired
     private BookshelfService shelfSvc;
 
-    // @PostMapping(path= "/addBook", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(path= "/addBook")
+    @ResponseBody
+    public ResponseEntity<String> createBook(@RequestBody MultiValueMap<String, String> form) throws Exception {
+
+        Bookshelf shelf = new Bookshelf();
+
+        String email = form.getFirst("email");
+        String bookId = form.getFirst("bookId");
+        String title = form.getFirst("title");
+        String imageUrl = form.getFirst("imageUrl");
+
+        shelf.setUserEmail(email);
+        shelf.setBookId(bookId);
+        shelf.setTitle(title);
+        shelf.setImageUrl(imageUrl);
+
+        shelfSvc.createBook(shelf);
+
+        System.out.println(">>>> Adding book to shelf");
+
+        return new ResponseEntity<String>(shelf.toJson().toString(), HttpStatus.OK);
+
+    }
+
+    // @PostMapping(path="/addBook/{bookId}/{email}")
     // @ResponseBody
-    // @CrossOrigin(origins = "*")
-    // public ResponseEntity<String> createBook(@RequestBody MultiValueMap<String, String> form) throws Exception {
+    // public ResponseEntity<String> addBook (@RequestParam String bookId, String email) throws Exception {
 
-    //     Bookshelf shelf = new Bookshelf();
-
-    //     String email = form.getFirst("email");
-    //     String bookId = form.getFirst("bookId");
-    //     String title = form.getFirst("title");
-    //     String subtitle = form.getFirst("subtitle");
-    //     String authors = form.getFirst("authors");
-    //     String categories = form.getFirst("categories");
-    //     String imageUrl = form.getFirst("imageUrl");
-
-    //     shelf.setUserEmail(email);
-    //     shelf.setBookId(bookId);
-    //     shelf.setTitle(title);
-    //     shelf.setSubtitle(subtitle);
-    //     shelf.setAuthors(authors);
-    //     shelf.setCategories(categories);
-    //     shelf.setImageUrl(imageUrl);
-
-    //     shelfSvc.createBook(shelf);
-
-    //     System.out.println(">>>> Adding book to shelf");
-
-    //     return new ResponseEntity<String>(shelf.toJson().toString(), HttpStatus.OK);
-
+    //     shelfSvc.createBook(bookId, email);
+        
+    //     return new ResponseEntity<String>("Book has been removed from Shelf!", HttpStatus.OK);
     // }
 
     @GetMapping(path="shelf/{email}")

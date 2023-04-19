@@ -12,23 +12,23 @@
     <div class="container">
       <div class="main">
         <ul id="bk-list" class="bk-list clearfix">
-          <li *ngFor="let b of books">
-            <div class="bk-book book-1 bk-bookdefault"*ngFor="let a of b.authors| keyvalue">
+          <li *ngFor="let b of books; let i = index">
+            <div class="bk-book book-1 bk-bookdefault" *ngFor="let author of b.authors">
               <div class="bk-front">
                 <div class="bk-cover-back"></div>
                 <div class="bk-cover">
+                    <h2 *ngFor="let categories of b.categories">
+                      <span>{{author['string']}}</span>
+                      <span>{{b.title}}</span>
+                    </h2>
+                  </div>
+                </div>
+                <div class="bk-right"></div>
+                <div class="bk-left">
                   <h2>
-                    <span>{{a.value | json}}</span>
+                    <span>{{author['string']}}</span>
                     <span>{{b.title}}</span>
                   </h2>
-                </div>
-              </div>
-              <div class="bk-right"></div>
-              <div class="bk-left">
-                <h2>
-                  <span>{{a}}</span>
-                  <span>{{b.title}}</span>
-                </h2>
               </div>
               <div class="bk-top"></div>
               <div class="bk-bottom"></div>
@@ -36,7 +36,7 @@
             <div class="bk-info" >
               <form>
                 <input type="hidden" name="favourite" data-th-value="${r.id}">
-                <button pButton pRipple type="button" icon="pi pi-bookmark" label="Favourite" class="p-button-raised"></button>
+                <button pButton pRipple type="button" icon="pi pi-bookmark" label="Favourite" class="p-button-raised" (click)="addBook(b.id, b.title, b.imgUrl)" ></button>
                 <button pButton pRipple type="button" icon="pi pi-search" label="View Inside" class="p-button-raised"></button>
               </form>
 

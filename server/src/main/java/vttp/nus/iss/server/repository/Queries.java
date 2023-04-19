@@ -20,7 +20,7 @@ public interface Queries {
 
     //////// BOOKSHELF QUERIES ////////
     // ? CREATE
-    public static String SQL_INSERT_BOOK = "INSERT INTO bookshelf(EMAIL, BOOK_ID, TITLE, SUBTITLE, AUTHORS, CATEGORIES, IMAGEURL) values( ?, ?, ?, ?, ?, ?, ?)";
+    public static String SQL_INSERT_BOOK = "INSERT INTO bookshelf(EMAIL, BOOK_ID, TITLE, IMAGEURL) values( ?, ?, ?, ?)";
 
     // ? READ
     public static String SQL_FIND_ALL_BOOKS_BY_USER = "SELECT * FROM bookshelf where email = ?";

@@ -20,17 +20,31 @@ export class BookService {
         return this.http.get<Book[]>(url, {params: params}); 
     }
 
-    getUserBooks(email: String): Observable<Shelf[]> {
+    getUserBooks(email: string): Observable<Shelf[]> {
         const url = this.baseURL + "shelf/" + email
         return this.http.get<Shelf[]>(url);
     }
 
-    deleteBook(bookId: String, email: String): Observable<Shelf> {
+    deleteBook(bookId: string, email: string): Observable<Shelf> {
         const url = this.baseURL + "delete/" + bookId + "/" + email
-        console.log(url)
-
         return this.http.delete<Shelf>(url);
-      }
+    }
+
+    saveBooks(email: string, bookId: string, title: string, imgUrl: string):Observable<Shelf> {
+        const url = this.baseURL + "addBook" 
+        const qs = new HttpParams()
+        .set("email", email)
+        .set("bookId", bookId)
+        .set("title", title)
+        .set("imageUrl", imgUrl)
+
+        const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+
+        console.log(url)
+        
+        return this.http.post<Shelf>(url, qs.toString(), {headers});
+
+    }
 
 }
 

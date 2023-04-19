@@ -30,7 +30,7 @@ export class BookshelfComponent implements OnInit {
     })
   }
 
-  deleteBook(id:String) {
+  deleteBook(id:string) {
     console.log(this.email)
     this.shelfSvc.deleteBook(id, this.email).subscribe(data => {
       console.log(data);

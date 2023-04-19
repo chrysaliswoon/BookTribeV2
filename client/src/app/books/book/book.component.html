@@ -1,0 +1,41 @@
+<section  style="padding: 100px;">
+    <div id="wrapper">
+      <div id="container">
+
+        <section class="open-book" *ngFor="let b of books; let i = index">
+          <header *ngFor="let author of b.authors">
+            <h6>{{author['string']}}</h6>
+          </header>
+          <article>
+            <h2 class="chapter-title">{{b.title}}</h2>
+            <img data-th-src="@{${d.imgUrl}}" alt="${d.title}" />
+            <dl>
+              <dt>Categories: </dt>
+              <dd>
+                <em data-th-text="${d.categories}"></em>
+              </dd>
+              <br>
+              <div class="bk-info">
+                <form>
+                  <input type="hidden" name="favourite" data-th-value="${d.id}">
+                  <button pButton pRipple type="button" icon="pi pi-bookmark" label="Favourite" class="p-button-raised" (click)="addBook(b.id, b.title, b.imgUrl)" ></button>
+                  <button pButton pRipple type="button" icon="pi pi-search" label="Search" class="p-button-raised"></button>
+                </form>
+              </div>
+            </dl>
+            <h3 class="sub-title"></h3>
+            <p data-th-utext="${d.description}"></p>
+
+          </article>
+
+          <footer>
+            <ol id="page-numbers">
+              <li>1</li>
+              <li>2</li>
+            </ol>
+          </footer>
+        </section>
+
+      </div>
+    </div>
+  </section>

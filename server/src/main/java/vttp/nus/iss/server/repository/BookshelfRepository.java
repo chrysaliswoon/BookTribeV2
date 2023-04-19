@@ -17,10 +17,14 @@ public class BookshelfRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     
-    //? Creates a new book in the bookshelf for the user
-    public Integer createBook(Bookshelf book) throws Exception {
-        return jdbcTemplate.update(SQL_INSERT_BOOK, book.getUserEmail(),book.getBookId(), book.getTitle(), book.getSubtitle(), book.getAuthors(), book.getCategories(), book.getImageUrl());
+    // ? Creates a new book in the bookshelf for the user
+    public Integer createBook(Bookshelf shelf) throws Exception {
+        return jdbcTemplate.update(SQL_INSERT_BOOK, shelf.getUserEmail(), shelf.getBookId(), shelf.getTitle(), shelf.getImageUrl());
     }
+
+    //     public Integer createBook(String bookId, String email, String title, String url) throws Exception {
+    //     return jdbcTemplate.update(SQL_INSERT_BOOK, email, bookId, title, url);
+    // }
 
     public List<Bookshelf> getAllBooks(String email) {
         List<Bookshelf> result = new LinkedList<>();

@@ -1,11 +1,12 @@
 export interface Book {
-    id: String
-    title: String
-    subtitle: String
+    id: string
+    title: string
+    subtitle: string
     authors: []
+    string: []
     categories: []
-    description: String
-    imageUrl: String
+    description: string
+    imgUrl: string
 }
 
 // export interface Author {

@@ -1,17 +1,16 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppTopbarComponent } from 'src/app/layout/app.topbar.component';
-import {  Book } from 'src/app/models/book';
+import { Book } from 'src/app/models/book';
 import { Shelf } from 'src/app/models/shelf';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
-  selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss']
+  selector: 'app-book',
+  templateUrl: './book.component.html',
+  styleUrls: ['./book.component.scss']
 })
-export class BookListComponent implements OnInit{
+export class BookComponent implements OnInit {
+
 
   books!: Book[];
   bookName: String = '';
@@ -47,10 +46,6 @@ addBook(id: string, title: string, url: string) {
 
     console.log(data)
   })
-
-  
-
 }
-
 
 }

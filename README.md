@@ -52,8 +52,7 @@ The application consists of a minimum of 2 logical parts:
 ## Additional Requirements
 | Type | Requirements  | Fulfilled? |
 | -------------| ------------- | ------------- |
-SpringBoot Backend | Integrate with API that requires OAuth2 Authentication |  |
-SpringBoot Backend| Use Spring Boot security with JWT to authenticate and authorize Angular requests |  |
+SpringBoot Backend | Integrating with payment gateway - Stripe |  |
 SpringBoot Backend| Sending email - Uses SendGrid | ✓ |
 Angular Frontend | Use map eg Google Map - PrimeNG GMap | ✓ |
 Angular Frontend | Use UI component framework - PrimeNG | ✓ |

@@ -14,13 +14,22 @@ public class BookshelfService {
     @Autowired
     private BookshelfRepository bookshelfRepo;
 
-    public boolean createBook(Bookshelf book) throws Exception {
+    public boolean createBook(Bookshelf shelf) throws Exception {
         
-        bookshelfRepo.createBook(book);
+        bookshelfRepo.createBook(shelf);
         System.out.println(">>> Added book to the shelf database");
 
         return true;
     }
+
+
+    // public boolean createBook(String bookId, String email, String title, String url) throws Exception {
+        
+    //     bookshelfRepo.createBook(email, bookId, title, url);
+    //     System.out.println(">>> Added book to the shelf database");
+
+    //     return true;
+    // }
 
     public List<Bookshelf> getUserBooks(String email) {
         List<Bookshelf> allBooks = bookshelfRepo.getAllBooks(email);

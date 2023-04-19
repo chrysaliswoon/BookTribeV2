@@ -15,6 +15,9 @@ import { LandingPageComponent } from './landing/landing-page/landing-page.compon
 import { WelcomeComponent } from './landing/welcome/welcome.component';
 import { RegisterComponent } from './auth/registration/register/register.component';
 import { VerificationComponent } from './auth/verification/verification.component';
+import { CancelComponent } from './billing/cancel/cancel.component';
+import { SuccessComponent } from './billing/success/success.component';
+import { BookComponent } from './books/book/book.component';
 
 const routes: Routes = [
   {
@@ -40,8 +43,11 @@ const routes: Routes = [
       {path: 'inspire', component: InspirePageComponent},
       {path: 'profile', component: ProfileComponent},
       {path: 'billing', component: BillingComponent},
-      {path: 'search', component: BookListComponent}
-
+      {path: 'search', component: BookListComponent},
+      {path: 'search/:id', component: BookComponent},
+      {path: 'checkout', component: BillingComponent},
+      { path: 'cancel', component: CancelComponent },
+      { path: 'success', component: SuccessComponent },
     ]
   }
 ];
