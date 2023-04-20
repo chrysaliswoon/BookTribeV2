@@ -43,6 +43,8 @@ export class LoginEmailComponent implements OnInit{
       localStorage.setItem("firstName", this.user.firstName);
       localStorage.setItem("lastName", this.user.lastName);
       localStorage.setItem("email", this.user.email);
+      localStorage.setItem("profileImg", this.user.profileImg);
+
       this.goToWelcomePage()
       });
   }

@@ -12,6 +12,7 @@ CREATE TABLE  `users` (
  `LASTNAME` varchar(128) not null,
  `EMAIL` varchar(128) not null unique,
  `PASSWORD` varchar(256) not null,
+ `PROFILEIMG` longblob not null,
  `VERIFICATIONCODE` varchar(256),
  `VERIFIED` boolean not null default 0,
  `CREATED` datetime default current_timestamp,

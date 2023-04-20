@@ -40,6 +40,7 @@ export class AppProfileSidebarComponent implements OnInit{
         localStorage.removeItem("username")
         localStorage.removeItem("firstName")
         localStorage.removeItem("lastName")
+        localStorage.removeItem("profileImg")
         this.router.navigate(["/"]);
     }
 

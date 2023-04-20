@@ -4,10 +4,10 @@ export interface User {
     lastName: string
     email: string
     password: string
-    images: Image[]
+    profileImg: string
 }
 
-export interface Image {
-    name: string;
-    objectURL: string;
-}
+// export interface Image {
+//     name: string;
+//     objectURL: string;
+// }

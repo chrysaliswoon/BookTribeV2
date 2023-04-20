@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { Image, User } from '../models/user';
+import {  User } from '../models/user';
 import { DatePipe } from '@angular/common';
 import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -42,7 +42,6 @@ export class ProfileComponent implements OnInit {
     this.username = localStorage.getItem("username");
     this.firstName = localStorage.getItem("firstName");
     this.lastName = localStorage.getItem("lastName");
-
   }
 
   showBasicDialog() {
@@ -50,9 +49,9 @@ export class ProfileComponent implements OnInit {
   }
 
   onUpload(event: any) {
-    for (let file of event.files) {
-      this.user.images.push(file);
-    }
+    // for (let file of event.files) {
+    //   this.user.images.push(file);
+    // }
   }
 
   onSubmit() {

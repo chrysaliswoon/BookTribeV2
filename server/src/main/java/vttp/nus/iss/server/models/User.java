@@ -14,13 +14,10 @@ public class User {
     private String email;
     private String password;
     private String imageId;
-    private String imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png";
+    private String imageUrl = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
     private String role;
     private String verificationCode;
     private boolean verified;
-
-    
-    
 
     public String getRole() {
         return role;

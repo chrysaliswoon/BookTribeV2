@@ -39,7 +39,6 @@ public class UserAuthController {
     
     @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
-    @CrossOrigin(origins = "*")
     public ResponseEntity<String> createUser(@RequestBody MultiValueMap<String, String> form) throws Exception {
 
         User user = new User();
@@ -83,7 +82,6 @@ public class UserAuthController {
 
     @PostMapping(path="/signin", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
-    @CrossOrigin(origins = "*")
     public ResponseEntity<String> authenticateUser(@RequestBody MultiValueMap<String, String> form) throws Exception{
         User user = new User();
         user.setEmail(form.getFirst("email"));
@@ -124,17 +122,32 @@ public class UserAuthController {
     }
 
 
-    // @PutMapping(path="/update/{email}")
-    // @ResponseBody
-    // public ResponseEntity<String> updateUserFirstName (MultiValueMap<String, String> form, @PathVariable String email) throws Exception {
+    @PutMapping(path="/update/{email}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @ResponseBody
+    public ResponseEntity<String> updateUserProfile (@RequestBody MultiValueMap<String, String> form, @PathVariable String email) throws Exception {
 
-    //    String first_name = form.getFirst("firstName");
-    
-    //     userSvc.updateUserDetails(first_name, email);
+        User user = new User();
 
-    //     return new ResponseEntity<String>("User has been updated!", HttpStatus.OK);
+        //? Get new data from the form
+        String firstName = form.getFirst("firstName");
+        // String last_name = form.getFirst("lastName");
+        // String password = form.getFirst("password");
+        // String profileImg = form.getFirst("profileImg");
 
-    // }
+        //? Set the data in the User model
+        user.setFirstName(firstName);
+        // user.setLastName(last_name);
+        // user.setPassword(password);
+        // user.setImageUrl(profileImg);
+        user.setEmail(email);
+
+        userSvc.updateUserDetails(user);
+
+        System.out.println(user);
+
+        return new ResponseEntity<String>(user.toJson().toString(), HttpStatus.OK);
+
+    }
 
     @DeleteMapping(path="/delete/{email}")
     @ResponseBody

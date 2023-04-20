@@ -57,9 +57,9 @@ public class UserService {
         
     }
 
-    public boolean updateUserDetails(String value, String email) {
+    public Integer updateUserDetails(User user) throws Exception {
         
-        return userRepo.updateUserByEmail(value, email);
+        return userRepo.updateUserByEmail(user);
     }
 
 

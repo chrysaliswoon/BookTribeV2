@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 import { BookService } from '../services/book.service';
@@ -8,15 +8,19 @@ import { Book } from '../models/book';
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html'
 })
-export class AppTopbarComponent{
+export class AppTopbarComponent implements OnInit{
 
     books!: Book[];
-
     bookName: String = '';
+    profileImg: String 
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
     constructor(public layoutService: LayoutService, private router: Router, private bookSvc: BookService) { }
+
+    ngOnInit(): void {
+        this.profileImg = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+    }
     
     onMenuButtonClick() {
         this.layoutService.onMenuToggle();

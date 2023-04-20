@@ -4,7 +4,7 @@ public interface Queries {
 
     //////// USER QUERIES ////////
     // ? CREATE
-    public static String SQL_INSERT_USER = "INSERT INTO users(username, firstName, lastName, email, password) values(?, ?, ?, ?, sha2(?, 256))";
+    public static String SQL_INSERT_USER = "INSERT INTO users(username, firstName, lastName, email, password, profileimg) values(?, ?, ?, ?, sha2(?, 256), ?)";
 
     // ? READ
     public static String SQL_EXISTING_USER = "SELECT * FROM users WHERE email = ?";
@@ -13,7 +13,7 @@ public interface Queries {
     public static String SQL_FIND_ALL_USERS = "SELECT * FROM users";
 
     // ? UPDATE
-    public static String SQL_UPDATE_USER_FIRSTNAME = "UPDATE users SET FIRSTNAME = ? WHERE email = ?";
+    public static String SQL_UPDATE_USER = "UPDATE users SET FIRSTNAME = ? WHERE email = ?";
 
     // ? DELETE
     public static String SQL_DELETE_USER = "DELETE FROM users WHERE email=?";

@@ -19,7 +19,6 @@ export class BookListComponent implements OnInit{
 
   constructor(private router: Router, private bookSvc: BookService) { }
 
-
   ngOnInit(): void {
     this.getBooks
   }

@@ -33,7 +33,7 @@ public class UserRepository {
 
     //? Creates a new user
     public Integer createUser(User user) throws Exception {
-        return jdbcTemplate.update(SQL_INSERT_USER, user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
+        return jdbcTemplate.update(SQL_INSERT_USER, user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getImageUrl());
     }
 
     // Checks if the user credentials are correct
@@ -75,13 +75,11 @@ public class UserRepository {
         
     }
 
-
     //? Update User
-    public boolean updateUserByEmail(String value, String email) {
+    public Integer updateUserByEmail(User user) throws Exception {
         
-        int added = jdbcTemplate.update(SQL_UPDATE_USER_FIRSTNAME, value, email);
+        return jdbcTemplate.update(SQL_UPDATE_USER, user.getFirstName(),user.getEmail());
 
-        return added > 0;
     }
 
 
