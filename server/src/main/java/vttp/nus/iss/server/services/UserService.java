@@ -58,7 +58,6 @@ public class UserService {
     }
 
     public Integer updateUserDetails(User user) throws Exception {
-        
         return userRepo.updateUserByEmail(user);
     }
 

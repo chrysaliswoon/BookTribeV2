@@ -122,30 +122,35 @@ public class UserAuthController {
     }
 
 
-    @PutMapping(path="/update/{email}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(path="/update/{email}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
-    public ResponseEntity<String> updateUserProfile (@RequestBody MultiValueMap<String, String> form, @PathVariable String email) throws Exception {
+    public ResponseEntity<String> updateUserProfile (
+        @RequestBody MultiValueMap<String, String> form,
+        @PathVariable String email) throws Exception {
 
+        // System.out.println("Hitting Put Map");
+        // System.out.println(email);
+        // System.out.println(form.getFirst("firstName"));
         User user = new User();
 
         //? Get new data from the form
         String firstName = form.getFirst("firstName");
-        // String last_name = form.getFirst("lastName");
-        // String password = form.getFirst("password");
-        // String profileImg = form.getFirst("profileImg");
+        String last_name = form.getFirst("lastName");
+        String password = form.getFirst("password");
+        String profileImg = form.getFirst("profileImg");
 
         //? Set the data in the User model
         user.setFirstName(firstName);
-        // user.setLastName(last_name);
-        // user.setPassword(password);
-        // user.setImageUrl(profileImg);
+        user.setLastName(last_name);
+        user.setPassword(password);
+        user.setImageUrl(profileImg);
         user.setEmail(email);
 
         userSvc.updateUserDetails(user);
 
-        System.out.println(user);
-
-        return new ResponseEntity<String>(user.toJson().toString(), HttpStatus.OK);
+        return new ResponseEntity<String>(
+            "OK", 
+            HttpStatus.OK);
 
     }
 
