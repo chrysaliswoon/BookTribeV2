@@ -6,8 +6,3 @@ export interface User {
     password: string
     profileImg: string
 }
-
-// export interface Image {
-//     name: string;
-//     objectURL: string;
-// }

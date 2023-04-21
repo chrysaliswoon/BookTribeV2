@@ -23,6 +23,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { MenuModule } from 'primeng/menu';
 import {CardModule} from 'primeng/card';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
+import { ImageModule } from 'primeng/image';
 
 const components: any [] = [
     CommonModule,
@@ -49,7 +50,8 @@ const components: any [] = [
     MenuModule,
     ButtonModule,
     CardModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    ImageModule
 ]
 
 @NgModule({

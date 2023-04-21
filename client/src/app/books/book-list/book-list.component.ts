@@ -1,6 +1,7 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AppTopbarComponent } from 'src/app/layout/app.topbar.component';
 import {  Book } from 'src/app/models/book';
 import { Shelf } from 'src/app/models/shelf';
@@ -16,17 +17,28 @@ export class BookListComponent implements OnInit{
   books!: Book[];
   bookName: String = '';
   shelf!: Shelf
+  bookSubscription: Subscription
 
   constructor(private router: Router, private bookSvc: BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.bookName = this.route.snapshot.params['id'];
-
     this.getBooks(this.bookName);
   }
 
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   const paramId = this.route.snapshot.params['id']
+  //   changes[paramId];
+  //   this.getBooks(this.bookName);
+
+  // }
+
+  // ngOnDestroy(): void {
+  //     this.bookSubscription.unsubscribe()
+  // }
+
   getBooks(bookName: String) {
-    this.bookSvc.getBooks(bookName).subscribe(data => {
+    this.bookSubscription = this.bookSvc.getBooks(bookName).subscribe(data => {
        this.books = data
   });}
 

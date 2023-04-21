@@ -6,60 +6,10 @@
       <div class="title">
         <h1 class="title__text">{{user.firstName| titlecase}}</h1>
       </div>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="title__details">
-          <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Edit Profile"></p-button>
-          <p-dialog header="Edit Your Profile" [(visible)]="displayBasic" [style]="{width: '50vw'}">
-            <div class="grid p-fluid">
-              <div class="col-12">
-                <div class="p-inputgroup">
-                  <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                  <input type="text" pInputText placeholder="First Name" formControlName="firstName">
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="p-inputgroup">
-                  <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                  <input type="text" pInputText placeholder="Last Name" formControlName="lastName">
-                </div>
-              </div>
-
-              <div class="col-12">
-                <div class="p-inputgroup">
-                  <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                  <input type="text" pInputText placeholder="Password" formControlName="password">
-                </div>
-              </div>
-              <div class="col-12">
-                <!-- <p-fileUpload name="fileUpload" url="https://booktribe.sgp1.cdn.digitaloceanspaces.com"
-                  (onUpload)="onFileSelected($event)" [multiple]="false" accept="image/*" formControlName="fileUpload"
-                  #fileUpload>
-                  <ng-template pTemplate="content">
-                    <ul *ngIf="uploadedFiles.length">
-                        <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
-                    </ul>
-                  </ng-template>
-                </p-fileUpload> -->
-                
-<!-- <div class="card flex justify-content-center">
-  <p-toast></p-toast>
-  <p-fileUpload mode="basic" chooseLabel="Choose" name="demo[]" accept="image/*" (change)="onFileSelected($event)" formControlName="fileUpload"></p-fileUpload>
-</div> -->
-                <input type="file" formControlName="fileUpload" (change)="onFileSelected($event)" #fileUpload>
-              </div>
-            </div>
-            <ng-template pTemplate="footer">
-              <p-button icon="pi pi-exclamation-triangle" type="submit" label="Delete"
-                styleClass="p-button-text"></p-button>
-              <p-button icon="pi pi-user-edit" (click)="displayBasic=false" label="Update Profile"
-                styleClass="p-button-text" (onClick)="onUpload()"></p-button>
-            </ng-template>
-          </p-dialog>
-          <div>
-          </div>
+            <p-button label="Follow" icon="pi pi-heart"></p-button>
         </div>
-      </form>
+
       <div class="top-section__content">
         <div class="content-preview">
           <h3 class="content-preview__title">Who Am I?</h3>
@@ -77,7 +27,7 @@
         </div>
 
         <div class="content-preview">
-          <p><a href="https://www.behance.net/gallery/48387413/Magazine-Layout">{{email}}</a></p>
+          <p><a href="https://www.behance.net/gallery/48387413/Magazine-Layout">{{user.email}}</a></p>
           <p><i class="pi pi-calendar"></i> {{myDate | date: 'shortDate' }}</p>
         </div>
       </div>
@@ -98,8 +48,8 @@
       <div class="spacer"></div>
       <div class="content-preview content-preview--left content-preview--top">
         <h3 class="content-preview__title" style="color: black;">Personal Details</h3>
-        <p class="content-preview__excerpt" style="color: black;">First Name: {{firstName | titlecase}}</p>
-        <p class="content-preview__excerpt" style="color: black;">Last Name: {{lastName | titlecase}}</p>
+        <p class="content-preview__excerpt" style="color: black;">First Name: {{user.firstName| titlecase}}</p>
+        <p class="content-preview__excerpt" style="color: black;">Last Name: {{user.lastName| titlecase}}</p>
 
       </div>
 

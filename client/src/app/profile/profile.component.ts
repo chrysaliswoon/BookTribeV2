@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user';
 import { DatePipe } from '@angular/common';
@@ -14,6 +14,9 @@ import { FileUpload } from '../models/file';
   providers: [DatePipe, ConfirmationService, MessageService]
 })
 export class ProfileComponent implements OnInit {
+
+  // @ViewChild('fileUpload') fileUpload: FileUpload;
+
 
   file!: File
 

@@ -18,6 +18,7 @@ import { VerificationComponent } from './auth/verification/verification.componen
 import { CancelComponent } from './billing/cancel/cancel.component';
 import { SuccessComponent } from './billing/success/success.component';
 import { BookComponent } from './books/book/book.component';
+import { MemberProfileComponent } from './tribe/member-profile/member-profile.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
       {path: 'billing', component: BillingComponent},
       {path: 'search/:id', component: BookListComponent},
       {path: 'book/:id', component: BookComponent},
+      {path: 'user/:id', component: MemberProfileComponent},
       {path: 'checkout', component: BillingComponent},
       { path: 'cancel', component: CancelComponent },
       { path: 'success', component: SuccessComponent },
@@ -53,7 +55,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)] ,
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

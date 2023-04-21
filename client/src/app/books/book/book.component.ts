@@ -27,7 +27,6 @@ export class BookComponent implements OnInit {
 
   getBook(id: string) {
     this.bookSvc.getBookById(id).subscribe(data => {
-      // console.log(data)
       this.books = data;
     })
   }

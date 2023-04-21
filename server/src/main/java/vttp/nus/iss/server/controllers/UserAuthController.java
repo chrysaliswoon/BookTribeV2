@@ -117,6 +117,7 @@ public class UserAuthController {
     @GetMapping(path = "users")
     @ResponseBody
     public List<User> getAllUsers() {
+        
         List<User> allUsers = userSvc.getAllUsers();
 
         System.out.println(">>> Getting All Users in Database");
