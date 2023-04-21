@@ -1,11 +1,10 @@
 <div>
-
 <div class="grid flex flex-column md:flex-row gap-3">
   <form >
-    <div class="p-inputgroup">
+    <!-- <div class="p-inputgroup">
           <button (click)="searchBooks()" type="button" pButton label="Search"></button>
           <input type="text" id="bookName" name="bookName" pInputText placeholder="Keyword" [(ngModel)]="bookName"/>
-    </div>
+    </div> -->
       </form>
   </div>
 <section style="padding: 100px;">
@@ -39,7 +38,6 @@
                 <button pButton pRipple type="button" icon="pi pi-bookmark" label="Favourite" class="p-button-raised" (click)="addBook(b.id, b.title, b.imgUrl)" ></button>
                 <button pButton pRipple type="button" icon="pi pi-search" label="View Inside" class="p-button-raised" (click)="bookDetails(b.id)"></button>
               </form>
-
             </div>
           </li>
           <li>

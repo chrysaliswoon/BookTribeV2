@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,16 +10,21 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './register-email.component.html',
   styleUrls: ['./register-email.component.scss']
 })
-export class RegisterEmailComponent implements OnInit{
+export class RegisterEmailComponent implements OnInit, OnDestroy{
 
   registerForm!: FormGroup
   submitted = false;
   user!: User;
-
+  subcription: Subscription;
+  
   constructor(private fb: FormBuilder, private userSvc: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.createForm()
+  }
+
+  ngOnDestroy(): void {
+      this.subcription.unsubscribe()
   }
 
   private createForm(): FormGroup {
@@ -41,8 +47,8 @@ export class RegisterEmailComponent implements OnInit{
     this.submitted = true
     this.user = this.registerForm.value;
 
-    this.userSvc.createUser(this.user).subscribe(data => {
-      console.log(data)
+    this.subcription = this.userSvc.createUser(this.user).subscribe(data => {
+      // console.log(data)
       this.user = data;
       localStorage.setItem("email", this.user.email)
       this.router.navigate(['/auth/verification'])

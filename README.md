@@ -8,8 +8,8 @@ The application consists of a minimum of 2 logical parts:
 | ------------- | ------------- |
 | Frontend - Angular  | Backend - SpringBoot  |
 | **Focus:** What users visually see and interact with on their browser or application | **Focus:** Consists of the Server, Application and Database |
-| Uses PrimeNG as the UI component framework  | Connects to MySQL & MongoDB Database  |
-| Deployed on Vercel  | Deployed on Railway  |
+| Uses PrimeNG as the UI component framework  | Connects to MySQL & AmzonS3 Database  |
+| Deployed on Railway  | Deployed on Railway  |
 
 
 ## <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png" width="30" height="30" /> Angular
@@ -38,7 +38,7 @@ The application consists of a minimum of 2 logical parts:
 | Use MySQL | ✓ |
 | Modeling data relationship: 1 to 1, 1 to Many (User Account, Bookshelf, Todo List) | ✓ |
 | Demonstrate data integrity and consistency when updating multiple tables - Transactional | ✓ |
-| Use another database - Amazon S3 Bucket (Profile Pictures) |  |
+| Use another database - Amazon S3 Bucket (Profile Pictures) | ✓ |
 | Use another database - MongoDB (Book Reviews) |  |
 
 

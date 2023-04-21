@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Shelf } from 'src/app/models/shelf';
 import { BookService } from 'src/app/services/book.service';
 
@@ -8,12 +9,14 @@ import { BookService } from 'src/app/services/book.service';
   templateUrl: './bookshelf.component.html',
   styleUrls: ['./bookshelf.component.scss']
 })
-export class BookshelfComponent implements OnInit {
+export class BookshelfComponent implements OnInit, OnDestroy {
 
 
   username: any = '';
   email: any = '';
   shelf!: Shelf[];
+  bookSubscription: Subscription;
+  deleteSubscription: Subscription;
 
   constructor(private router: Router,private shelfSvc: BookService) { }
 
@@ -24,15 +27,20 @@ export class BookshelfComponent implements OnInit {
     this.getBooks()
   }
 
+  ngOnDestroy(): void {
+      // this.bookSubscription.unsubscribe()
+      // this.deleteSubscription.unsubscribe()
+  }
+
   getBooks() {
-    this.shelfSvc.getUserBooks(this.email).subscribe(data => {
+    this.bookSubscription = this.shelfSvc.getUserBooks(this.email).subscribe(data => {
       this.shelf = data
     })
   }
 
   deleteBook(id:string) {
-    console.log(this.email)
-    this.shelfSvc.deleteBook(id, this.email).subscribe(data => {
+    // console.log(this.email)
+    this.deleteSubscription = this.shelfSvc.deleteBook(id, this.email).subscribe(data => {
       console.log(data);
     })
     this.router.navigate(['/dashboard'])

@@ -18,8 +18,8 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    @Autowired
-    private ImageRepository imageRepo;
+    // @Autowired
+    // private ImageRepository imageRepo;
 
     public boolean createUser(final User user) throws Exception {
         boolean userExists = userRepo.checkIfUserExists(user);
@@ -58,12 +58,16 @@ public class UserService {
         
     }
 
-    public Integer updateUserDetails(User user, MultipartFile file) throws Exception {
+    public Integer updateUserDetails(String firstName, String lastName, String password, String url, String email) throws Exception {
 
-        String imageUrl = imageRepo.upload(file);
-        user.setImageUrl(imageUrl);
-        
-        return userRepo.updateUserByEmail(user);
+        // String imageUrl = imageRepo.upload(profileImg);
+        // user.setProfileImg(imageUrl);
+        // System.out.println(user.getProfileImg());
+        // System.out.println(user.getFirstName());
+        // System.out.println("Updating user details");
+        // System.out.println(user.getEmail());
+
+        return userRepo.updateUserByEmail(firstName, lastName, password, url, email);
     }
 
 

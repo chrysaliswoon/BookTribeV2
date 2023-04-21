@@ -1,5 +1,5 @@
 export interface FileUpload {
-    fileUpload: File 
+    profileImg: File 
     firstName: string
     lastName: string
     email: string

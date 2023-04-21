@@ -36,20 +36,20 @@ public class ImageRepository {
 	@Autowired
 	private AmazonS3 s3;
 
-	public String upload(MultipartFile file) {
+	public String upload(MultipartFile profileImg) {
 
 		// Map<String, String> userData = new HashMap<>();
 		// userData.put("name", user.getUsername());
 
 		ObjectMetadata metadata = new ObjectMetadata();
-		metadata.setContentType(file.getContentType());
-		metadata.setContentLength(file.getSize());
+		metadata.setContentType(profileImg.getContentType());
+		metadata.setContentLength(profileImg.getSize());
 
 		String key = UUID.randomUUID().toString().substring(0, 8);
 
 		try {
 			PutObjectRequest putReq = new PutObjectRequest(spacesBucket
-					, key, file.getInputStream(), metadata);
+					, key, profileImg.getInputStream(), metadata);
 			putReq.withCannedAcl(CannedAccessControlList.PublicRead);
 			s3.putObject(putReq);
 		} catch (Exception ex) {

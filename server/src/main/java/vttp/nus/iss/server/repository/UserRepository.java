@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import vttp.nus.iss.server.models.User;
 
@@ -36,7 +35,7 @@ public class UserRepository {
 
     //? Creates a new user
     public Integer createUser(User user) throws Exception {
-        return jdbcTemplate.update(SQL_INSERT_USER, user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getImageUrl());
+        return jdbcTemplate.update(SQL_INSERT_USER, user.getUsername(), user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword(), user.getProfileImg());
     }
 
     // Checks if the user credentials are correct
@@ -54,6 +53,7 @@ public class UserRepository {
 
         if (!rs.next())
             return Optional.empty();
+
         return Optional.of(User.create(rs));
     }
 
@@ -69,6 +69,7 @@ public class UserRepository {
             user.setUsername(rs.getString("USERNAME"));
             user.setFirstName(rs.getString("FIRSTNAME"));
             user.setLastName(rs.getString("LASTNAME"));
+            user.setProfileImg(rs.getString("PROFILEIMG"));
             user.setEmail(rs.getString("EMAIL"));
 
             result.add(user);
@@ -79,9 +80,13 @@ public class UserRepository {
     }
 
     //? Update User
-    public Integer updateUserByEmail(User user) throws Exception {
-        
-        return jdbcTemplate.update(SQL_UPDATE_USER, user.getFirstName(),user.getLastName(), user.getPassword(), user.getImageUrl(), user.getEmail());
+    public Integer updateUserByEmail(String firstName, String lastName, String password, String url, String email) throws Exception {
+        // System.out.printf("Updated Name:", user.getFirstName());
+        // System.out.printf("Updated Image:", user.getProfileImg());
+        System.out.println("Updating SQL database");
+
+        System.out.println(email);
+        return jdbcTemplate.update(SQL_UPDATE_USER, firstName,lastName, password, url, email);
 
     }
 

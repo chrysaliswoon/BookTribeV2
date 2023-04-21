@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgModel } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppTopbarComponent } from 'src/app/layout/app.topbar.component';
 import {  Book } from 'src/app/models/book';
 import { Shelf } from 'src/app/models/shelf';
@@ -17,26 +17,19 @@ export class BookListComponent implements OnInit{
   bookName: String = '';
   shelf!: Shelf
 
-  constructor(private router: Router, private bookSvc: BookService) { }
+  constructor(private router: Router, private bookSvc: BookService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getBooks
+    this.bookName = this.route.snapshot.params['id'];
+
+    this.getBooks(this.bookName);
   }
 
   getBooks(bookName: String) {
     this.bookSvc.getBooks(bookName).subscribe(data => {
        this.books = data
-       console.log(this.books.forEach);
-  });
-  }
+  });}
 
-searchBooks() {
-    this.getBooks(this.bookName)
-    this.router.navigate(
-        ['dashboard/search'],
-        {queryParams: {book: this.bookName}}
-    );
-}
 
 addBook(id: string, title: string, url: string) {
 
@@ -49,7 +42,7 @@ addBook(id: string, title: string, url: string) {
 
 bookDetails(id: string) {
 
-  this.router.navigate(['dashboard/search', id]);  
+  this.router.navigate(['dashboard/book', id]);  
 
 }
 

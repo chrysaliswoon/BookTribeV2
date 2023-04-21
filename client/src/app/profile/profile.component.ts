@@ -23,6 +23,7 @@ export class ProfileComponent implements OnInit {
   email: any = '';
   firstName: any = '';
   lastName: any = '';
+  profileImg: any = '';
   displayBasic: boolean = false;
   myDate = new Date();
   imageData = "";
@@ -40,7 +41,7 @@ export class ProfileComponent implements OnInit {
       firstName: this.fb.control<string>('', [Validators.required]),
       lastName: this.fb.control<string>('', [Validators.required]),
       password: this.fb.control<string>('', [Validators.required]),
-      fileUpload: this.fb.control(Validators.required),
+      profileImg: this.fb.control(Validators.required),
     })
   }
 
@@ -49,6 +50,8 @@ export class ProfileComponent implements OnInit {
     this.username = localStorage.getItem("username");
     this.firstName = localStorage.getItem("firstName");
     this.lastName = localStorage.getItem("lastName");
+    this.profileImg = localStorage.getItem("file");
+
   }
 
   showBasicDialog() {
@@ -60,7 +63,7 @@ export class ProfileComponent implements OnInit {
     console.info('file', this.file)
 
     this.form.patchValue({
-      fileUpload: this.file
+      profileImg: this.file
     })
   }
 
@@ -71,9 +74,11 @@ export class ProfileComponent implements OnInit {
     //console.info(formData)
 
     this.userSvc.updateUser(formData)
+
     .then(results => {
-      //this.ngOnInit()
     })
+    this.router.navigate(['/login'])
+
 
   }
 

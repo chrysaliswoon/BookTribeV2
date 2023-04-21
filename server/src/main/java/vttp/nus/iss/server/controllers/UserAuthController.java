@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import vttp.nus.iss.server.models.SendGridEmail;
 import vttp.nus.iss.server.models.User;
+import vttp.nus.iss.server.repository.ImageRepository;
 import vttp.nus.iss.server.services.EmailService;
 import vttp.nus.iss.server.services.UserService;
 
@@ -37,6 +38,9 @@ public class UserAuthController {
 
     @Autowired
     private EmailService mailSvc;
+
+    @Autowired
+    private ImageRepository imageRepo;
 
     @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
@@ -106,8 +110,7 @@ public class UserAuthController {
     public Optional<User> getUserDetails(@PathVariable String email) {
         Optional<User> userDetails = userSvc.getUserDetails(email);
 
-        System.out.println(">>> Getting User Details");
-
+        System.out.println(">>> Getting User Details");        
         return userDetails;
     }
 
@@ -153,24 +156,19 @@ public class UserAuthController {
     // HttpStatus.OK);
     // }
 
-    @PostMapping(path = "/update/{email}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PutMapping(path = "/update/{email}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> updateProfile(@RequestPart MultipartFile file, @RequestPart String firstName,
-            @RequestPart String lastName, @RequestPart String password, @PathVariable String email) {
-                System.out.println(file);
-                System.out.println("Updating user email");
-                System.out.println("%s %s %s %s".formatted(firstName, lastName, password, email));
-                User user = new User();
-                user.setFirstName(firstName);
-                user.setLastName(lastName);
-                user.setPassword(password);
+    public ResponseEntity<String> updateProfile(@RequestPart MultipartFile profileImg, @RequestPart String firstName,
+            @RequestPart String lastName, @RequestPart String password, @PathVariable String email) throws Exception {
+                String imageUrl = imageRepo.upload(profileImg);
 
-                try {
-                    userSvc.updateUserDetails(user, file);
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                User user = new User();
+                String firstN = user.setFirstName(firstName);
+                String lastN = user.setLastName(lastName);
+                String pass = user.setPassword(password);
+                String url =  user.setProfileImg(imageUrl);
+
+                userSvc.updateUserDetails(firstN, lastN, pass, url, email);
 
                 return new ResponseEntity<String>("User details has been updated",HttpStatus.OK);
 

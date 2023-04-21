@@ -13,12 +13,12 @@ public class User {
     private String lastName;
     private String email;
     private String password;
-    private String imageId;
-    private String imageUrl = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
+    private String profileImg = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png";
     private String role;
     private String verificationCode;
     private boolean verified;
 
+    
     public String getRole() {
         return role;
     }
@@ -53,14 +53,14 @@ public class User {
     public String getFirstName() {
         return firstName;
     }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String setFirstName(String firstName) {
+        return this.firstName = firstName;
     }
     public String getLastName() {
         return lastName;
     }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String setLastName(String lastName) {
+        return this.lastName = lastName;
     }
     public String getEmail() {
         return email;
@@ -71,8 +71,8 @@ public class User {
     public String getPassword() {
         return password;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public String setPassword(String password) {
+        return this.password = password;
     }
 
     public JsonObject toJson() {
@@ -81,6 +81,7 @@ public class User {
             .add("firstName", firstName)
             .add("lastName", lastName)
             .add("email", email)
+            .add("profileImg", profileImg)
             .add("password", password)
             .build();
     }
@@ -94,25 +95,21 @@ public class User {
 
     public static User create(SqlRowSet rs) {
         User user = new User();
-        user.setUsername(rs.getString("username"));
-        user.setFirstName(rs.getString("firstName"));
-        user.setLastName(rs.getString("lastName"));
-        user.setEmail(rs.getString("email"));
-        user.setPassword(rs.getString("password"));
+        user.setUsername(rs.getString("USERNAME"));
+        user.setFirstName(rs.getString("FIRSTNAME"));
+        user.setLastName(rs.getString("LASTNAME"));
+        user.setEmail(rs.getString("EMAIL"));
+        user.setProfileImg(rs.getString("PROFILEIMG"));
+        user.setPassword(rs.getString("PASSWORD"));
         return user;
     }
-    public String getImageUrl() {
-        return imageUrl;
+    public String getProfileImg() {
+        return profileImg;
     }
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public String setProfileImg(String profileImg) {
+        return this.profileImg = profileImg;
     }
-    public String getImageId() {
-        return imageId;
-    }
-    public void setImageId(String imageId) {
-        this.imageId = imageId;
-    }
+
 
     
     

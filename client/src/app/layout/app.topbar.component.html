@@ -9,18 +9,18 @@
 
     <div class="topbar-end">
         <ul class="topbar-menu">
-            <!-- <li class=" flex flex-column md:flex-row gap-3">
-                <form >
+            <li class=" flex flex-column md:flex-row gap-3">
+                <form>
                     <div class="p-inputgroup">
-                        <button (click)="searchBooks()" type="button" pButton label="Search"></button>
-                            <input type="text" id="bookName" name="bookName" pInputText placeholder="Keyword" [(ngModel)]="bookName"/>
-                        </div>
-                    </form>
-            </li> -->
+                        <button (click)="searchBooks(bookName)" type="button" pButton label="Search"></button>
+                        <input type="text" id="bookName" name="bookName" pInputText placeholder="Keyword"
+                            [(ngModel)]="bookName" />
+                    </div>
+                </form>
+            </li>
             <li class="topbar-profile">
-                <button type="button" class="p-link" (click)="onProfileButtonClick()">
-                    <img src={{profileImg}} alt="Profile" />
-                </button>
+                <p-avatar image={{profileImg}} styleClass="mr-2" size="xlarge" size="xlarge"
+                    (click)="onProfileButtonClick()"></p-avatar>
             </li>
         </ul>
     </div>

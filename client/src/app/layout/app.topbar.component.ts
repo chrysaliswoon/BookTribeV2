@@ -6,20 +6,22 @@ import { Book } from '../models/book';
 
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
+    styleUrls: ['./app.topbar.component.scss']
 })
 export class AppTopbarComponent implements OnInit{
 
     books!: Book[];
-    bookName: String = '';
-    profileImg: String 
+    bookName: string = '';
+    profileImg: string
+    
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
     constructor(public layoutService: LayoutService, private router: Router, private bookSvc: BookService) { }
 
     ngOnInit(): void {
-        this.profileImg = "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
+        this.profileImg = localStorage.getItem("profileImg")
     }
     
     onMenuButtonClick() {
@@ -30,19 +32,14 @@ export class AppTopbarComponent implements OnInit{
         this.layoutService.showProfileSidebar();
     }
 
-    // getBooks(bookName: String) {
-    //     this.bookSvc.getBooks(bookName).subscribe(data => {
-    //        this.books = data
-    //   });
-    //   }
+    getBooks(bookName: string) {
+        this.bookSvc.getBooks(bookName).subscribe(data => {
+           this.books = data
+      });}
 
-    // searchBooks() {
-    //     this.getBooks(this.bookName)
-    //     this.router.navigate(
-    //         ['dashboard/search'],
-    //         {queryParams: {book: this.bookName}}
-    //     );
-        
-    // }
+      searchBooks(id: string) {
+        this.router.navigate(['dashboard/search', id]);  
+        console.log(id)
+      }
     
 }

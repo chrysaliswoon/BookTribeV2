@@ -48,7 +48,6 @@ export class BookComponent implements OnInit {
 
   searchBook() {
     this.router.navigate(['dashboard/search']);  
-
   }
 
 

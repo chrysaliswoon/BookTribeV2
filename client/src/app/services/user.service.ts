@@ -58,13 +58,14 @@ export class UserService {
     updateUser(form: FileUpload): Promise<any> {
       const url = this.baseUrl + "update/" + form.email
       const formData = new FormData()
-      formData.append("file", form.fileUpload)
+      formData.append("profileImg", form.profileImg)
       formData.append("firstName", form.firstName)
       formData.append("lastName", form.lastName)
       formData.append("password", form.password)
       //console.info('formData', formData.get('file'))
+      // const headers = new HttpHeaders().set('Content-Type', 'multipart/form-data')
 
-      return firstValueFrom(this.http.post<any>(url, formData));
+      return firstValueFrom(this.http.put<any>(url, formData));
     }
 
     deleteUser(email: String): Observable<User> {
