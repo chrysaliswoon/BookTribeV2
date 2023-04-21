@@ -13,7 +13,7 @@ public interface Queries {
     public static String SQL_FIND_ALL_USERS = "SELECT * FROM users";
 
     // ? UPDATE
-    public static String SQL_UPDATE_USER = "UPDATE users SET FIRSTNAME = ? WHERE email = ?";
+    public static String SQL_UPDATE_USER = "UPDATE users SET FIRSTNAME = ?, LASTNAME = ?, PASSWORD = ?, PROFILEIMG = ? WHERE email = ?";
 
     // ? DELETE
     public static String SQL_DELETE_USER = "DELETE FROM users WHERE email=?";

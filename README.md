@@ -37,9 +37,9 @@ The application consists of a minimum of 2 logical parts:
 | ------------- | ------------- |
 | Use MySQL | ✓ |
 | Modeling data relationship: 1 to 1, 1 to Many (User Account, Bookshelf, Todo List) | ✓ |
-| Demonstrate data integrity and consistency when updating multiple tables | ✓ |
+| Demonstrate data integrity and consistency when updating multiple tables - Transactional | ✓ |
 | Use another database - Amazon S3 Bucket (Profile Pictures) |  |
-| Use another database - Redis (Cache) |  |
+| Use another database - MongoDB (Book Reviews) |  |
 
 
 ## Deployment
@@ -52,7 +52,7 @@ The application consists of a minimum of 2 logical parts:
 ## Additional Requirements
 | Type | Requirements  | Fulfilled? |
 | -------------| ------------- | ------------- |
-SpringBoot Backend | Integrating with payment gateway - Stripe |  |
+SpringBoot Backend | Integrating with payment gateway - Stripe | ✓ |
 SpringBoot Backend| Sending email - Uses SendGrid | ✓ |
 Angular Frontend | Use map eg Google Map - PrimeNG GMap | ✓ |
 Angular Frontend | Use UI component framework - PrimeNG | ✓ |

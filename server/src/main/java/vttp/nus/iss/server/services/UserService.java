@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import vttp.nus.iss.server.models.User;
 import vttp.nus.iss.server.repository.ImageRepository;
@@ -57,7 +58,11 @@ public class UserService {
         
     }
 
-    public Integer updateUserDetails(User user) throws Exception {
+    public Integer updateUserDetails(User user, MultipartFile file) throws Exception {
+
+        String imageUrl = imageRepo.upload(file);
+        user.setImageUrl(imageUrl);
+        
         return userRepo.updateUserByEmail(user);
     }
 

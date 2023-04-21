@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "../environment";
 import { User } from "../models/user";
-import { Observable } from "rxjs";
+import { Observable, firstValueFrom } from "rxjs";
+import { FileUpload } from "../models/file";
 
 
 const BACKEND = environment.serverUrl
@@ -52,7 +53,18 @@ export class UserService {
       const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
 
       return this.http.post<User>(url, qs.toString(), {headers});
+    }
 
+    updateUser(form: FileUpload): Promise<any> {
+      const url = this.baseUrl + "update/" + form.email
+      const formData = new FormData()
+      formData.append("file", form.fileUpload)
+      formData.append("firstName", form.firstName)
+      formData.append("lastName", form.lastName)
+      formData.append("password", form.password)
+      //console.info('formData', formData.get('file'))
+
+      return firstValueFrom(this.http.post<any>(url, formData));
     }
 
     deleteUser(email: String): Observable<User> {
@@ -61,6 +73,8 @@ export class UserService {
 
       return this.http.delete<User>(url);
     }
+
+    
 
 
 

@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.HexFormat;
 import java.util.Map;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,29 +36,29 @@ public class ImageRepository {
 	@Autowired
 	private AmazonS3 s3;
 
-	public boolean upload(User user, MultipartFile file) {
+	public String upload(MultipartFile file) {
 
-		Map<String, String> userData = new HashMap<>();
-		userData.put("name", user.getUsername());
+		// Map<String, String> userData = new HashMap<>();
+		// userData.put("name", user.getUsername());
 
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentType(file.getContentType());
 		metadata.setContentLength(file.getSize());
 
+		String key = UUID.randomUUID().toString().substring(0, 8);
+
 		try {
 			PutObjectRequest putReq = new PutObjectRequest(spacesBucket
-					, user.getImageId(), file.getInputStream(), metadata);
+					, key, file.getInputStream(), metadata);
 			putReq.withCannedAcl(CannedAccessControlList.PublicRead);
 			s3.putObject(putReq);
 		} catch (Exception ex) {
 			logger.log(Level.WARNING, "Put S3", ex);
-			return false;
 		}
 
 		String imageUrl = "https://%s.%s/%s"
-				.formatted(spacesBucket, spacesEndpointUrl, user.getImageId());
-		user.setImageUrl(imageUrl);
-
-		return true;
+				.formatted(spacesBucket, spacesEndpointUrl, key);
+		
+		return imageUrl;
     }
 }

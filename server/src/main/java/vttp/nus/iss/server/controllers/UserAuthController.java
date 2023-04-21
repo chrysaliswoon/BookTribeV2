@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import vttp.nus.iss.server.models.SendGridEmail;
 import vttp.nus.iss.server.models.User;
 import vttp.nus.iss.server.services.EmailService;
 import vttp.nus.iss.server.services.UserService;
-
 
 @Controller
 @RequestMapping(path = "/api/auth", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -36,7 +37,7 @@ public class UserAuthController {
 
     @Autowired
     private EmailService mailSvc;
-    
+
     @PostMapping(path = "/signup", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
     public ResponseEntity<String> createUser(@RequestBody MultiValueMap<String, String> form) throws Exception {
@@ -80,28 +81,27 @@ public class UserAuthController {
         return new ResponseEntity<String>(user.toJson().toString(), HttpStatus.OK);
     }
 
-    @PostMapping(path="/signin", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping(path = "/signin", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
-    public ResponseEntity<String> authenticateUser(@RequestBody MultiValueMap<String, String> form) throws Exception{
+    public ResponseEntity<String> authenticateUser(@RequestBody MultiValueMap<String, String> form) throws Exception {
         User user = new User();
         user.setEmail(form.getFirst("email"));
         user.setPassword(form.getFirst("password"));
 
-
         try {
             if (!userSvc.authenticateUser(user)) {
                 return new ResponseEntity<String>("User login failed!", HttpStatus.NOT_FOUND);
-        } else {
-            System.out.println(">>> Successfully Logged In!");
-        }
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            } else {
+                System.out.println(">>> Successfully Logged In!");
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         // System.out.println(user.toJson().toString());
         return new ResponseEntity<String>(user.userJson().toString(), HttpStatus.OK);
     }
 
-    @GetMapping(path="{email}")
+    @GetMapping(path = "{email}")
     @ResponseBody
     public Optional<User> getUserDetails(@PathVariable String email) {
         Optional<User> userDetails = userSvc.getUserDetails(email);
@@ -111,7 +111,7 @@ public class UserAuthController {
         return userDetails;
     }
 
-    @GetMapping(path="users")
+    @GetMapping(path = "users")
     @ResponseBody
     public List<User> getAllUsers() {
         List<User> allUsers = userSvc.getAllUsers();
@@ -121,53 +121,68 @@ public class UserAuthController {
         return allUsers;
     }
 
+    // @PostMapping(path="/update/{email}", consumes =
+    // MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    // @ResponseBody
+    // public ResponseEntity<String> updateUserProfile (@RequestBody
+    // MultiValueMap<String, String> form, @PathVariable String email) throws
+    // Exception {
 
-    @PostMapping(path="/update/{email}", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    // // System.out.println("Hitting Put Map");
+    // // System.out.println(email);
+    // // System.out.println(form.getFirst("firstName"));
+    // User user = new User();
+
+    // //? Get new data from the form
+    // String firstName = form.getFirst("firstName");
+    // String last_name = form.getFirst("lastName");
+    // String password = form.getFirst("password");
+    // String profileImg = form.getFirst("profileImg");
+
+    // //? Set the data in the User model
+    // user.setFirstName(firstName);
+    // user.setLastName(last_name);
+    // user.setPassword(password);
+    // user.setImageUrl(profileImg);
+    // user.setEmail(email);
+
+    // userSvc.updateUserDetails(user);
+
+    // return new ResponseEntity<String>(
+    // "User details has been updated",
+    // HttpStatus.OK);
+    // }
+
+    @PostMapping(path = "/update/{email}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> updateUserProfile (
-        @RequestBody MultiValueMap<String, String> form,
-        @PathVariable String email) throws Exception {
+    public ResponseEntity<String> updateProfile(@RequestPart MultipartFile file, @RequestPart String firstName,
+            @RequestPart String lastName, @RequestPart String password, @PathVariable String email) {
+                System.out.println(file);
+                System.out.println("Updating user email");
+                System.out.println("%s %s %s %s".formatted(firstName, lastName, password, email));
+                User user = new User();
+                user.setFirstName(firstName);
+                user.setLastName(lastName);
+                user.setPassword(password);
 
-        // System.out.println("Hitting Put Map");
-        // System.out.println(email);
-        // System.out.println(form.getFirst("firstName"));
-        User user = new User();
+                try {
+                    userSvc.updateUserDetails(user, file);
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
 
-        //? Get new data from the form
-        String firstName = form.getFirst("firstName");
-        String last_name = form.getFirst("lastName");
-        String password = form.getFirst("password");
-        String profileImg = form.getFirst("profileImg");
-
-        //? Set the data in the User model
-        user.setFirstName(firstName);
-        user.setLastName(last_name);
-        user.setPassword(password);
-        user.setImageUrl(profileImg);
-        user.setEmail(email);
-
-        userSvc.updateUserDetails(user);
-
-        return new ResponseEntity<String>(
-            "OK", 
-            HttpStatus.OK);
+                return new ResponseEntity<String>("User details has been updated",HttpStatus.OK);
 
     }
 
-    @DeleteMapping(path="/delete/{email}")
+    @DeleteMapping(path = "/delete/{email}")
     @ResponseBody
-    public ResponseEntity<String> deleteUser (@PathVariable String email) throws Exception {
+    public ResponseEntity<String> deleteUser(@PathVariable String email) throws Exception {
 
         userSvc.deleteUser(email);
-        
+
         return new ResponseEntity<String>("User has been deleted!", HttpStatus.OK);
     }
-
-
-
-
-
-
-
 
 }

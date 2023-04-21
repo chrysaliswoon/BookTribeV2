@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import vttp.nus.iss.server.models.User;
 
@@ -15,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Transactional
 public class UserRepository {
 
     @Autowired
@@ -78,7 +81,7 @@ public class UserRepository {
     //? Update User
     public Integer updateUserByEmail(User user) throws Exception {
         
-        return jdbcTemplate.update(SQL_UPDATE_USER, user.getFirstName(),user.getEmail());
+        return jdbcTemplate.update(SQL_UPDATE_USER, user.getFirstName(),user.getLastName(), user.getPassword(), user.getImageUrl(), user.getEmail());
 
     }
 

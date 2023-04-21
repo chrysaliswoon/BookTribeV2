@@ -6,7 +6,7 @@
       <div class="title">
         <h1 class="title__text">{{username | titlecase}}</h1>
       </div>
-      <form [formGroup]="updateProfile" (ngSubmit)="onSubmit()">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data" >
       <div class="title__details">
         <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Edit Profile"></p-button>
         <p-dialog header="Edit Your Profile" [(visible)]="displayBasic" [style]="{width: '50vw'}">
@@ -14,14 +14,14 @@
             <div class="col-12">
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                <input type="text" pInputText placeholder="First Name">
+                <input type="text" pInputText placeholder="First Name" formControlName="firstName">
               </div>
             </div>
 
             <div class="col-12">
               <div class="p-inputgroup">
                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                <input type="text" pInputText placeholder="Last Name">
+                <input type="text" pInputText placeholder="Last Name" formControlName="lastName">
               </div>
             </div>
 
@@ -32,13 +32,14 @@
               </div>
             </div>
             <div class="col-12">
-              <p-fileUpload mode="basic" name="avatar" url="./upload.php" accept="image/*" [maxFileSize]="1000000"
-                styleClass="p-button-outlined p-button-plain" chooseLabel="Upload Image"></p-fileUpload>
+              <input type="file" formControlName="fileUpload" (change)="onFileSelected($event)" #fileUpload>
+              <!-- <p-fileUpload mode="basic" name="avatar" url="./upload.php" accept="image/*" [maxFileSize]="1000000"
+                styleClass="p-button-outlined p-button-plain" chooseLabel="Upload Image"></p-fileUpload> -->
             </div>
           </div>
           <ng-template pTemplate="footer">
             <p-button icon="pi pi-exclamation-triangle" type="submit" label="Delete" styleClass="p-button-text"></p-button>
-            <p-button icon="pi pi-user-edit" (click)="displayBasic=false" label="Update Profile" styleClass="p-button-text"></p-button>
+            <p-button icon="pi pi-user-edit" (click)="displayBasic=false" label="Update Profile" styleClass="p-button-text" (onClick)="onUpload()"></p-button>
           </ng-template>
         </p-dialog>
         <div>

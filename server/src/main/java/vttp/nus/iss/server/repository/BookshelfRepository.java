@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import static vttp.nus.iss.server.repository.Queries.*;
 
 import java.util.LinkedList;
@@ -12,6 +14,7 @@ import java.util.List;
 import vttp.nus.iss.server.models.Bookshelf;
 
 @Repository
+@Transactional
 public class BookshelfRepository {
 
     @Autowired
