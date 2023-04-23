@@ -22,11 +22,12 @@ export class BookshelfComponent implements OnInit, OnDestroy {
   books: Book[]
   bookSubscription: Subscription;
   deleteSubscription: Subscription;
+  bookId: any = ''
+  bookTitle: any = ''
 
   constructor(private fb: FormBuilder, private router: Router,private shelfSvc: BookService, private reviewSvc: ReviewService) { }
 
   ngOnInit(): void {
-    // this.bookId = this.route.snapshot.params['id']
     this.firstName = localStorage.getItem("firstName");
     this.email = localStorage.getItem("email");
     this.getBooks()
@@ -36,7 +37,7 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 
   private createForm(): FormGroup {
     return this.fb.group({
-      comments: this.fb.control<string>('', [Validators.required]),
+      comments: this.fb.control('', [Validators.required]),
     })
   }
 
@@ -57,24 +58,27 @@ export class BookshelfComponent implements OnInit, OnDestroy {
   // });}
 
   deleteBook(id:string) {
-    // console.log(this.email)
     this.deleteSubscription = this.shelfSvc.deleteBook(id, this.email).subscribe(data => {
-      console.log(data);
     })
     this.router.navigate(['/dashboard'])
 
   }
 
-  submitReview(id:string) {
+  submitReview() {
 
-    const comments = this.form.value
+    const comments =  this.form.value.comments
+    // console.log(comments)
 
-    this.reviewSvc.postReview(this.email, id, comments).subscribe(data => {
-      console.log(data)
+    this.reviewSvc.postReview(this.email, this.bookId, comments).subscribe(data => {
+      // console.log(data)
+      this.router.navigate(['/reviews'])
+
     })
   }
 
-  showDialog() {
+  showDialog(id: string, title: string) {
+      this.bookId = id
+      this.bookTitle = title
       this.visible = true;
   }
 

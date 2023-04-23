@@ -21,9 +21,9 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/dashboard']
                     },
                     {
-                        label: 'Reading Goals',
+                        label: 'Book Reviews',
                         icon: 'pi pi-fw pi-book',
-                        routerLink: ['/dashboard/goals']
+                        routerLink: ['/dashboard/reviews']
                     },
                     {
                         label: 'Book Tribe',

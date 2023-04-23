@@ -6,10 +6,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import vttp.nus.iss.server.models.User;
-import vttp.nus.iss.server.repository.ImageRepository;
 import vttp.nus.iss.server.repository.UserRepository;
 
 @Service
@@ -18,8 +16,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepo;
 
-    // @Autowired
-    // private ImageRepository imageRepo;
 
     public boolean createUser(final User user) throws Exception {
         boolean userExists = userRepo.checkIfUserExists(user);

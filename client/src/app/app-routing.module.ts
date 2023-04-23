@@ -18,6 +18,7 @@ import { VerificationComponent } from './auth/verification/verification.componen
 import { SuccessComponent } from './billing/success/success.component';
 import { BookComponent } from './books/book/book.component';
 import { MemberProfileComponent } from './tribe/member-profile/member-profile.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 const routes: Routes = [
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
     path: 'dashboard', component: AppLayoutComponent,
     children: [
       {path: '', component: DashboardOverviewComponent},
-      {path: 'goals', component: GoalsPageComponent},
+      {path: 'reviews', component: ReviewsComponent},
       {path: 'tribe', component: TribePageComponent},
       {path: 'inspire', component: InspirePageComponent},
       {path: 'profile', component: ProfileComponent},

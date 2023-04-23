@@ -34,6 +34,7 @@ import { GoogleMapComponent } from './about/google-map/google-map.component';
 import { SuccessComponent } from './billing/success/success.component';
 import { BookComponent } from './books/book/book.component';
 import { MemberProfileComponent } from './tribe/member-profile/member-profile.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { MemberProfileComponent } from './tribe/member-profile/member-profile.co
     GoogleMapComponent,
     SuccessComponent,
     BookComponent,
-    MemberProfileComponent
+    MemberProfileComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,

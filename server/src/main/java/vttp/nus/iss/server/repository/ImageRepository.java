@@ -1,9 +1,5 @@
 package vttp.nus.iss.server.repository;
 
-import java.security.MessageDigest;
-import java.util.HashMap;
-import java.util.HexFormat;
-import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,12 +10,10 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.internal.BucketNameUtils;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
-import vttp.nus.iss.server.models.User;
 
 @Repository
 public class ImageRepository {
