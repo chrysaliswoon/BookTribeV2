@@ -38,7 +38,7 @@ export class BookListComponent implements OnInit{
   // }
 
   getBooks(bookName: String) {
-    this.bookSubscription = this.bookSvc.getBooks(bookName).subscribe(data => {
+    this.bookSubscription = this.bookSvc.getBooks(this.bookName).subscribe(data => {
        this.books = data
   });}
 
@@ -53,7 +53,6 @@ addBook(id: string, title: string, url: string) {
 }
 
 bookDetails(id: string) {
-
   this.router.navigate(['dashboard/book', id]);  
 
 }
