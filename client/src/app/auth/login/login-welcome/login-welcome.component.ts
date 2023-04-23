@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-welcome.component.scss']
 })
 export class LoginWelcomeComponent implements OnInit{
-username: any = "";
+firstName: any = "";
 
 constructor(public router: Router){}
 
 ngOnInit(): void {
 
-    this.username = localStorage.getItem("username");
+    this.firstName = localStorage.getItem("firstName");
 }
 
 }

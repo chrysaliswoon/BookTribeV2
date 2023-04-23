@@ -60,8 +60,7 @@ export class BookshelfComponent implements OnInit, OnDestroy {
   deleteBook(id:string) {
     this.deleteSubscription = this.shelfSvc.deleteBook(id, this.email).subscribe(data => {
     })
-    this.router.navigate(['/dashboard'])
-
+    window.location.reload();
   }
 
   submitReview() {

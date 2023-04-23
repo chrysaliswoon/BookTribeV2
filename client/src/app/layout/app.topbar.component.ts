@@ -39,7 +39,9 @@ export class AppTopbarComponent implements OnInit{
 
       searchBooks(id: string) {
         this.router.navigate(['dashboard/search', id]);  
+        this.bookName = '';
         console.log(id)
       }
+      
     
 }

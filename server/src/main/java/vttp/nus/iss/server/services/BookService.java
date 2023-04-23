@@ -80,7 +80,15 @@ public class BookService {
             }
 
             JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
-            String imgUrl = imgLinks.getString("thumbnail");
+
+            String imgUrl;
+
+            if (!imgLinks.containsKey("imgUrl")) {
+                imgUrl = imgLinks.getString("thumbnail");
+            } else {
+                imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS896ZGLvwYZdICPJZyrHaIftMU_xy6e7IzNB7e9yFFEjB9gA468idBk56Ygdgbh8Tabw&usqp=CAUe";
+            }
+
             String title = volInfo.getString("title");
             JsonArray authors = volInfo.getJsonArray("authors");
             JsonArray categories = volInfo.getJsonArray("categories");
@@ -136,7 +144,15 @@ public class BookService {
         }
 
         JsonObject imgLinks = volInfo.getJsonObject("imageLinks");
-        String imgUrl = imgLinks.getString("thumbnail");
+
+        String imgUrl;
+
+        if (!imgLinks.containsKey("imgUrl")) {
+            imgUrl = imgLinks.getString("thumbnail");
+        } else {
+            imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS896ZGLvwYZdICPJZyrHaIftMU_xy6e7IzNB7e9yFFEjB9gA468idBk56Ygdgbh8Tabw&usqp=CAUe";
+        }
+
         String title = volInfo.getString("title");
         String description = volInfo.getString("description");
         JsonArray authors = volInfo.getJsonArray("authors");

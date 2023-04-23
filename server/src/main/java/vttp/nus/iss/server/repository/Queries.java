@@ -36,4 +36,7 @@ public interface Queries {
     public static String SQL_FIND_ALL_REVIEWS_BY_USER = "SELECT reviews.REVIEW_ID, BOOKSHELF.BOOK_ID, reviews.EMAIL, BOOKSHELF.TITLE, BOOKSHELF.IMAGEURL, reviews.COMMENTS FROM BOOKSHELF INNER JOIN REVIEWS ON bookshelf.BOOK_ID=reviews.BOOK_ID WHERE reviews.email = ?";
     public static String SQL_FIND_ALL_REVIEWS_BY_BOOKID = "SELECT * FROM book_reviews where book_id = ?";
 
+    //? DELETE
+    public static String SQL_DELETE_REVIEW_BY_USER_AND_BOOKID = "DELETE FROM book_reviews where book_id = ? AND email = ?";
+
 }

@@ -1,7 +1,8 @@
 module.exports = [
 	{
 		context: [ '/api/**' ],
-		target: 'http://localhost:8080',
+		target: 'https://booktribe.up.railway.app',
+		// target: 'http://localhost:8080',
 		secure: false
 	}
 ]

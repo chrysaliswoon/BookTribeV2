@@ -37,8 +37,8 @@ public class StripeController {
         .setQuantity((long) 1).build();
 
     SessionCreateParams params = SessionCreateParams.builder().setMode(SessionCreateParams.Mode.PAYMENT)
-        .setSuccessUrl(CLIENT_URL + "dashboard/success")
-        .setCancelUrl(CLIENT_URL + "dashboard")
+        .setSuccessUrl(CLIENT_URL + "#/dashboard/success")
+        .setCancelUrl(CLIENT_URL + "#/dashboard")
         .addLineItem(lineItem)
         .build();
     Session session = Session.create(params);

@@ -38,6 +38,7 @@ import { ContactComponent } from './about/contact/contact.component';
 import { AboutComponent } from './about/about/about.component';
 import { HeroComponent } from './about/hero/hero.component';
 import { FeaturesComponent } from './landing/features/features.component';
+import { BookReviewsComponent } from './books/book-reviews/book-reviews.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { FeaturesComponent } from './landing/features/features.component';
     ContactComponent,
     AboutComponent,
     HeroComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    BookReviewsComponent,
   ],
   imports: [
     BrowserModule,
