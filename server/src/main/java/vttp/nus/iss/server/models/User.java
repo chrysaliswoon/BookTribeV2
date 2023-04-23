@@ -103,6 +103,7 @@ public class User {
         user.setPassword(rs.getString("PASSWORD"));
         return user;
     }
+    
     public String getProfileImg() {
         return profileImg;
     }

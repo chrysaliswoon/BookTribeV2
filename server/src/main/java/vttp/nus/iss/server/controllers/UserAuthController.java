@@ -109,7 +109,7 @@ public class UserAuthController {
     public Optional<User> getUserDetails(@PathVariable String email) {
         Optional<User> userDetails = userSvc.getUserDetails(email);
 
-        System.out.println(">>> Getting User Details");        
+        // System.out.println(">>> Getting User Details");        
         return userDetails;
     }
 
@@ -119,7 +119,7 @@ public class UserAuthController {
         
         List<User> allUsers = userSvc.getAllUsers();
 
-        System.out.println(">>> Getting All Users in Database");
+        // System.out.println(">>> Getting All Users in Database");
 
         return allUsers;
     }

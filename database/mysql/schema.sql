@@ -12,46 +12,39 @@ CREATE TABLE  `users` (
  `LASTNAME` varchar(128) not null,
  `EMAIL` varchar(128) not null unique,
  `PASSWORD` varchar(256) not null,
- `PROFILEIMG` longblob not null,
+ `PROFILEIMG` varchar(256) not null,
  `VERIFICATIONCODE` varchar(256),
  `VERIFIED` boolean not null default 0,
  `CREATED` datetime default current_timestamp,
- PRIMARY KEY (`USER_ID`),
+ PRIMARY KEY (`USER_ID`)
 );
 
 -- Bookshelf Table --
 CREATE TABLE  `bookshelf` (
  `BOOK_ID` varchar(128) NOT NULL,
- `USER_ID` int NOT NULL,
+ `EMAIL` varchar(128) not null,
  `TITLE` varchar(128),
  `SUBTITLE` varchar(128),
  `AUTHORS` varchar(128),
  `CATEGORIES` varchar(128),
- `DESCRIPTION` varchar(128),
- `IMAGEURL` varchar(128),
+ `IMAGEURL` varchar(800),
  `CREATED` datetime default current_timestamp,
- FOREIGN KEY (USER_ID) REFERENCES users(USER_ID)
-);
-
--- ToDo List Table --
-CREATE TABLE  `todo` (
- `TODO_ID` int NOT NULL AUTO_INCREMENT UNIQUE,
- `USER_ID` int NOT NULL,
- `BOOK_ID` varchar(128) NOT NULL,
- `TASK` varchar(128),
- `DUE_DATE` DATE,
- `COMPLETED` boolean,
- `CREATED` datetime default current_timestamp,
- FOREIGN KEY (USER_ID) REFERENCES users(USER_ID)
+ PRIMARY KEY (`BOOK_ID`),
+ FOREIGN KEY (EMAIL) REFERENCES users(EMAIL)
+ ON DELETE CASCADE
 );
 
 -- Book Review Table --
 CREATE TABLE  `reviews` (
  `REVIEW_ID` int NOT NULL AUTO_INCREMENT UNIQUE,
- `USER_ID` int NOT NULL,
+ `EMAIL` varchar(128) not null,
  `BOOK_ID` varchar(128) NOT NULL,
- `COMMENTS` varchar(128),
- `RATING` int,
+ `COMMENTS` text,
  `CREATED` datetime default current_timestamp,
  FOREIGN KEY (BOOK_ID) REFERENCES bookshelf(BOOK_ID)
+ ON DELETE CASCADE
 );
+
+
+-- All Book Review Table --
+CREATE TABLE book_reviews AS SELECT BOOKSHELF.BOOK_ID, reviews.EMAIL, BOOKSHELF.TITLE, BOOKSHELF.IMAGEURL, reviews.COMMENTS FROM BOOKSHELF INNER JOIN REVIEWS ON bookshelf.BOOK_ID=reviews.BOOK_ID;

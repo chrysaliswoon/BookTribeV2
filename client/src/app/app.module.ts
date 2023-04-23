@@ -25,7 +25,6 @@ import { BookListComponent } from './books/book-list/book-list.component';
 import { LandingPageComponent } from './landing/landing-page/landing-page.component';
 import { TopNavigationComponent } from './landing/top-navigation/top-navigation.component';
 import { WelcomeComponent } from './landing/welcome/welcome.component';
-import { HeroComponent } from './landing/hero/hero.component';
 import { RegisterComponent } from './auth/registration/register/register.component';
 import { RegisterEmailComponent } from './auth/registration/register-email/register-email.component';
 import { VerificationComponent } from './auth/verification/verification.component';
@@ -35,6 +34,10 @@ import { SuccessComponent } from './billing/success/success.component';
 import { BookComponent } from './books/book/book.component';
 import { MemberProfileComponent } from './tribe/member-profile/member-profile.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { ContactComponent } from './about/contact/contact.component';
+import { AboutComponent } from './about/about/about.component';
+import { HeroComponent } from './about/hero/hero.component';
+import { FeaturesComponent } from './landing/features/features.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,6 @@ import { ReviewsComponent } from './reviews/reviews.component';
     LandingPageComponent,
     TopNavigationComponent,
     WelcomeComponent,
-    HeroComponent,
     RegisterComponent,
     RegisterEmailComponent,
     VerificationComponent,
@@ -66,7 +68,11 @@ import { ReviewsComponent } from './reviews/reviews.component';
     SuccessComponent,
     BookComponent,
     MemberProfileComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    ContactComponent,
+    AboutComponent,
+    HeroComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,

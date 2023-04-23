@@ -1,1 +1,27 @@
-<p>reviews works!</p>
+
+<p-table [value]="reviews"  [tableStyle]="{'min-width': '60rem'}" >
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            {{firstName}} Reviews
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header" >
+        <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Reviews</th>
+            <th></th>
+            <th></th>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-reviews>
+        <tr >
+            <td>{{reviews['title']}}</td>
+            <td><img src="{{reviews['imageUrl']}}"/></td>
+            <td>{{reviews['comments']}}</td>
+            <td><p-button icon="pi pi-pencil" label="Edit Review" styleClass="p-button-secondary"></p-button></td>
+            <td><p-button icon="pi pi-trash" label="Delete Review" styleClass="p-button-warning"></p-button></td>
+        </tr>
+    </ng-template>
+</p-table>

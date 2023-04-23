@@ -33,10 +33,7 @@ public interface Queries {
     public static String SQL_INSERT_REVIEW = "INSERT INTO reviews(EMAIL, BOOK_ID, COMMENTS) values (?,?,?)";
 
     // ? READ
-    public static String SQL_FIND_ALL_REVIEWS_BY_USER = "SELECT * FROM reviews where email = ?";
-
-    //////// TASK ///////
-    // ? CREATE
-    public static String SQL_INSERT_TASK = "";
+    public static String SQL_FIND_ALL_REVIEWS_BY_USER = "SELECT * FROM book_reviews where email = ?";
+    public static String SQL_FIND_ALL_REVIEWS_BY_BOOKID = "SELECT * FROM book_reviews where book_id = ?";
 
 }

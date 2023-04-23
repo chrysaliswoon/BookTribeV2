@@ -4,3 +4,10 @@ export interface Review {
     comments: string
 }
 
+export interface AllReviews {
+    bookId: string
+    userEmail: string
+    title: string
+    imageUrl: string
+    comments: string
+}

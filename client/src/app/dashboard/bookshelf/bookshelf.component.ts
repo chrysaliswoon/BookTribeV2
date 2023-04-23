@@ -71,7 +71,7 @@ export class BookshelfComponent implements OnInit, OnDestroy {
 
     this.reviewSvc.postReview(this.email, this.bookId, comments).subscribe(data => {
       // console.log(data)
-      this.router.navigate(['/reviews'])
+      this.router.navigate(['/dashboard/reviews'])
 
     })
   }

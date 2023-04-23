@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "../environment";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Review } from "../models/review";
+import { AllReviews, Review } from "../models/review";
 
 const BACKEND = environment.serverUrl
 
@@ -24,6 +24,11 @@ export class ReviewService {
         const headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')        
         return this.http.post<Review>(url, qs.toString(), {headers});
 
+    }
+
+    getReviewsByUser(email: string): Observable<AllReviews[]> {
+        const url = this.baseURL + "reviews/" + email
+        return this.http.get<AllReviews[]>(url);
     }
 
 
