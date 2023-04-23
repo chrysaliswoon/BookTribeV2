@@ -38,9 +38,6 @@ public class ImageRepository {
 
 	public String upload(MultipartFile profileImg) {
 
-		// Map<String, String> userData = new HashMap<>();
-		// userData.put("name", user.getUsername());
-
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentType(profileImg.getContentType());
 		metadata.setContentLength(profileImg.getSize());

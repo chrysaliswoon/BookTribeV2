@@ -1,11 +1,35 @@
-
-<p-card header="Title">
+<p-card header="Contribute to the Community">
     <p class="m-0">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-        quas!
+        BookTribe was created by a bookworm and fellow book lover to help connect like-minded dreamers around the world.
+        However, this site requires resources to maintain. If you love what we do and would like to help us out, do hit
+        the donate button below. Every dollar helps towards creating exciting new features for the tribe members!
     </p>
+
+    <h5>        Below are some upcoming planned features:
+    </h5>
+
+    <p-table [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Features</th>
+                <th>Description</th>
+                <th>Status</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body">
+            <tr>
+                <td>Test</td>
+                <td>Description</td>
+                <td>Completed</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                <p>Every dollar helps in creating a better tribe</p>
+            </div>
+        </ng-template>
+    </p-table>
     <ng-template pTemplate="footer">
-        <p-button label="Checkout" icon="pi pi-check" (click)="pay()"></p-button>
+        <p-button label="Donate" icon="pi pi-check" (click)="pay()"></p-button>
     </ng-template>
 </p-card>
-

@@ -15,7 +15,6 @@ import { LandingPageComponent } from './landing/landing-page/landing-page.compon
 import { WelcomeComponent } from './landing/welcome/welcome.component';
 import { RegisterComponent } from './auth/registration/register/register.component';
 import { VerificationComponent } from './auth/verification/verification.component';
-import { CancelComponent } from './billing/cancel/cancel.component';
 import { SuccessComponent } from './billing/success/success.component';
 import { BookComponent } from './books/book/book.component';
 import { MemberProfileComponent } from './tribe/member-profile/member-profile.component';
@@ -48,7 +47,6 @@ const routes: Routes = [
       {path: 'book/:id', component: BookComponent},
       {path: 'user/:id', component: MemberProfileComponent},
       {path: 'checkout', component: BillingComponent},
-      { path: 'cancel', component: CancelComponent },
       { path: 'success', component: SuccessComponent },
     ]
   }

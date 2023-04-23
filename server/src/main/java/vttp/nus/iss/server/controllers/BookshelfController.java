@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import vttp.nus.iss.server.models.Bookshelf;
@@ -53,15 +52,6 @@ public class BookshelfController {
         return new ResponseEntity<String>(shelf.toJson().toString(), HttpStatus.OK);
 
     }
-
-    // @PostMapping(path="/addBook/{bookId}/{email}")
-    // @ResponseBody
-    // public ResponseEntity<String> addBook (@RequestParam String bookId, String email) throws Exception {
-
-    //     shelfSvc.createBook(bookId, email);
-        
-    //     return new ResponseEntity<String>("Book has been removed from Shelf!", HttpStatus.OK);
-    // }
 
     @GetMapping(path="shelf/{email}")
     @ResponseBody

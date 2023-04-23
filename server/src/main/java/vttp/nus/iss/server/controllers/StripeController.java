@@ -31,7 +31,8 @@ public class StripeController {
   @Value("${STRIPE.SECRET.KEY}")
   private String stripeSecretKey;
 
-  private String CLIENT_URL = "http://localhost:4200/";
+  @Value("${CLIENT.URL}")
+  private String CLIENT_URL;
 
   @PostMapping(path = "/payment")
   public ResponseEntity<String> checkout() throws StripeException {
@@ -45,7 +46,7 @@ public class StripeController {
 
     SessionCreateParams params = SessionCreateParams.builder().setMode(SessionCreateParams.Mode.PAYMENT)
         .setSuccessUrl(CLIENT_URL + "dashboard/success")
-        .setCancelUrl(CLIENT_URL + "dashboard/cancel")
+        .setCancelUrl(CLIENT_URL + "dashboard")
         .addLineItem(lineItem)
         .build();
     Session session = Session.create(params);

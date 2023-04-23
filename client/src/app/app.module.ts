@@ -31,7 +31,6 @@ import { RegisterEmailComponent } from './auth/registration/register-email/regis
 import { VerificationComponent } from './auth/verification/verification.component';
 import { BookshelfComponent } from './dashboard/bookshelf/bookshelf.component';
 import { GoogleMapComponent } from './about/google-map/google-map.component';
-import { CancelComponent } from './billing/cancel/cancel.component';
 import { SuccessComponent } from './billing/success/success.component';
 import { BookComponent } from './books/book/book.component';
 import { MemberProfileComponent } from './tribe/member-profile/member-profile.component';
@@ -63,7 +62,6 @@ import { MemberProfileComponent } from './tribe/member-profile/member-profile.co
     VerificationComponent,
     BookshelfComponent,
     GoogleMapComponent,
-    CancelComponent,
     SuccessComponent,
     BookComponent,
     MemberProfileComponent

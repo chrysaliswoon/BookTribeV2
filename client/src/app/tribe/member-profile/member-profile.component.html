@@ -20,9 +20,9 @@
         <div class="content-preview">
           <h3 class="content-preview__title">Genres I Love:</h3>
           <ul>
-            <li><i class="pi pi-book"> Fantasy </i></li>
-            <li><i class="pi pi-book"> Sci-Fi </i></li>
-            <li><i class="pi pi-book"> Mystery </i></li>
+            <li><i class="pi pi-heart"> Fantasy </i></li>
+            <li><i class="pi pi-heart"> Sci-Fi </i></li>
+            <li><i class="pi pi-heart"> Mystery </i></li>
           </ul>
         </div>
 
@@ -69,8 +69,9 @@
 
       <div class="content-preview content-preview--right content-preview--bottom">
         <h3 class="content-preview__title" style="color: black;">Currently Reading</h3>
-        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Ab pariatur eaque nihil tempora facere dicta mollitia impedit, nisi eius.</p>
+          <ul class="content-preview__excerpt" style="color: black;" *ngFor="let book of shelf">
+          <li><i class="pi pi-book"> {{book.title}} </i></li>
+        </ul>
       </div>
     </div>
 

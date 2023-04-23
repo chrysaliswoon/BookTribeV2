@@ -56,10 +56,6 @@ public class Bookshelf {
             .add("email", userEmail)
             .add("bookId", bookId)
             .add("title", title)
-            // .add("subtitle", subtitle)
-            // .add("authors", authors)
-            // .add("categories", categories)
-            // .add("imageUrl", imageUrl)
 
             .build();
     }

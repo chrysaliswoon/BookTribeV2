@@ -30,7 +30,7 @@ public interface Queries {
 
     //////// REVIEWS QUERIES ////////
     // ? CREATE
-    public static String SQL_INSERT_REVIEW = "";
+    public static String SQL_INSERT_REVIEW = "INSERT INTO reviews(EMAIL, BOOK_ID, COMMENTS) values (?,?,?)";
 
     //////// TASK ///////
     // ? CREATE

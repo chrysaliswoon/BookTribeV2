@@ -4,7 +4,7 @@
   <div class="cover__content">
     <div class="top-section">
       <div class="title">
-        <h1 class="title__text">{{user.firstName| titlecase}}</h1>
+        <h1 class="title__text">{{firstName| titlecase}}</h1>
       </div>
       <form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
         <div class="title__details">
@@ -32,26 +32,13 @@
                 </div>
               </div>
               <div class="col-12">
-                <!-- <p-fileUpload name="fileUpload" url="https://booktribe.sgp1.cdn.digitaloceanspaces.com"
-                  (onUpload)="onFileSelected($event)" [multiple]="false" accept="image/*" formControlName="fileUpload"
-                  #fileUpload>
-                  <ng-template pTemplate="content">
-                    <ul *ngIf="uploadedFiles.length">
-                        <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
-                    </ul>
-                  </ng-template>
-                </p-fileUpload> -->
-                
-<!-- <div class="card flex justify-content-center">
-  <p-toast></p-toast>
-  <p-fileUpload mode="basic" chooseLabel="Choose" name="demo[]" accept="image/*" (change)="onFileSelected($event)" formControlName="fileUpload"></p-fileUpload>
-</div> -->
                 <input type="file" formControlName="fileUpload" (change)="onFileSelected($event)" #fileUpload>
               </div>
             </div>
             <ng-template pTemplate="footer">
-              <p-button icon="pi pi-exclamation-triangle" type="submit" label="Delete"
-                styleClass="p-button-text"></p-button>
+              <p-toast></p-toast>
+              <p-confirmPopup></p-confirmPopup>
+              <p-button (click)="confirm($event)" icon="pi pi-exclamation-triangle" label="Delete Account"></p-button>
               <p-button icon="pi pi-user-edit" (click)="displayBasic=false" label="Update Profile"
                 styleClass="p-button-text" (onClick)="onUpload()"></p-button>
             </ng-template>
@@ -70,9 +57,9 @@
         <div class="content-preview">
           <h3 class="content-preview__title">Genres I Love:</h3>
           <ul>
-            <li><i class="pi pi-book"> Fantasy </i></li>
-            <li><i class="pi pi-book"> Sci-Fi </i></li>
-            <li><i class="pi pi-book"> Mystery </i></li>
+            <li><i class="pi pi-heart"> Fantasy </i></li>
+            <li><i class="pi pi-heart"> Sci-Fi </i></li>
+            <li><i class="pi pi-heart"> Mystery </i></li>
           </ul>
         </div>
 
@@ -117,10 +104,11 @@
           atque, vero, laborum eos quaerat nostrum deleniti laboriosam debitis.</p>
       </div>
 
-      <div class="content-preview content-preview--right content-preview--bottom">
+      <div class="content-preview content-preview--right content-preview--bottom" >
         <h3 class="content-preview__title" style="color: black;">Currently Reading</h3>
-        <p class="content-preview__excerpt" style="color: black;">Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Ab pariatur eaque nihil tempora facere dicta mollitia impedit, nisi eius.</p>
+          <ul class="content-preview__excerpt" style="color: black;" *ngFor="let book of shelf">
+          <li><i class="pi pi-book"> {{book.title}} </i></li>
+        </ul>
       </div>
     </div>
 

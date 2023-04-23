@@ -83,9 +83,9 @@ public class UserRepository {
     public Integer updateUserByEmail(String firstName, String lastName, String password, String url, String email) throws Exception {
         // System.out.printf("Updated Name:", user.getFirstName());
         // System.out.printf("Updated Image:", user.getProfileImg());
-        System.out.println("Updating SQL database");
+        // System.out.println("Updating SQL database");
 
-        System.out.println(email);
+        // System.out.println(email);
         return jdbcTemplate.update(SQL_UPDATE_USER, firstName,lastName, password, url, email);
 
     }

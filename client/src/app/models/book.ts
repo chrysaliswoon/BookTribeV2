@@ -9,7 +9,3 @@ export interface Book {
     imgUrl: string
 }
 
-// export interface Author {
-//     string: String
-// }
-

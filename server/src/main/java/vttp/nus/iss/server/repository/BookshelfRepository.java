@@ -25,10 +25,6 @@ public class BookshelfRepository {
         return jdbcTemplate.update(SQL_INSERT_BOOK, shelf.getUserEmail(), shelf.getBookId(), shelf.getTitle(), shelf.getImageUrl());
     }
 
-    //     public Integer createBook(String bookId, String email, String title, String url) throws Exception {
-    //     return jdbcTemplate.update(SQL_INSERT_BOOK, email, bookId, title, url);
-    // }
-
     public List<Bookshelf> getAllBooks(String email) {
         List<Bookshelf> result = new LinkedList<>();
         SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_ALL_BOOKS_BY_USER, email);
@@ -53,7 +49,7 @@ public class BookshelfRepository {
 
             int deleted = jdbcTemplate.update(SQL_DELETE_BOOKS_BY_ID, bookId, email);
 
-            System.out.println("Book has been deleted");
+            // System.out.println("Book has been deleted");
     
             return deleted > 0;
             
