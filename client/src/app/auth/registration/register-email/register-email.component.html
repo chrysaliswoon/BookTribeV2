@@ -47,6 +47,8 @@
         </span>
 
         <button pButton pRipple type="submit" label="Continue"
-            class="p-button-raised p-button-text w-full mb-4" [disabled]="registerForm.invalid"></button>
+            class="p-button-raised p-button-text w-full mb-4" [disabled]="registerForm.invalid">
+        </button>
+        <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
     </div>
 </form>

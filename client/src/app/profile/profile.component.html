@@ -28,19 +28,29 @@
               <div class="col-12">
                 <div class="p-inputgroup">
                   <span class="p-inputgroup-addon"><i class="pi pi-lock"></i></span>
-                  <input type="text" pInputText placeholder="Password" formControlName="password">
+                  <p-password styleClass="p-password p-component p-inputwrapper p-input-icon-right"
+                    [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" placeholder="******" [toggleMask]="true"
+                    formControlName="password"></p-password>
                 </div>
               </div>
               <div class="col-12">
-                <input type="file" formControlName="fileUpload" (change)="onFileSelected($event)" #fileUpload>
+                <!-- <p-fileUpload name="fileUpload" [customUpload]="true" formControlName="fileUpload" (change)="onFileSelected($event)" #fileUpload> -->
+            <!-- <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template> -->
+      <!-- </p-fileUpload> -->
+                <input type="file" id="file" class="inputfile"  formControlName="fileUpload" (change)="onFileSelected($event)" #fileUpload>
               </div>
             </div>
             <ng-template pTemplate="footer">
               <p-toast></p-toast>
               <p-confirmPopup></p-confirmPopup>
-              <p-button (click)="confirm($event)" icon="pi pi-exclamation-triangle" label="Delete Account"></p-button>
-              <p-button icon="pi pi-user-edit" (click)="displayBasic=false" label="Update Profile"
-                styleClass="p-button-text" (onClick)="onUpload()"></p-button>
+              <p-button (click)="confirm($event)" icon="pi pi-exclamation-triangle" label="Delete Account"
+                styleClass="p-button-help"></p-button>
+              <p-button (onClick)="onUpload()" icon="pi pi-user-edit" (click)="displayBasic=false"
+                label="Update Profile"></p-button>
             </ng-template>
           </p-dialog>
           <div>
@@ -104,9 +114,9 @@
           atque, vero, laborum eos quaerat nostrum deleniti laboriosam debitis.</p>
       </div>
 
-      <div class="content-preview content-preview--right content-preview--bottom" >
+      <div class="content-preview content-preview--right content-preview--bottom">
         <h3 class="content-preview__title" style="color: black;">Currently Reading</h3>
-          <ul class="content-preview__excerpt" style="color: black;" *ngFor="let book of shelf">
+        <ul class="content-preview__excerpt" style="color: black;" *ngFor="let book of shelf">
           <li><i class="pi pi-book"> {{book.title}} </i></li>
         </ul>
       </div>

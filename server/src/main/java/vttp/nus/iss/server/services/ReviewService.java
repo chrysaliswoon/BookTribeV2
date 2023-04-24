@@ -29,6 +29,10 @@ public class ReviewService {
         
     }
 
+    public boolean deleteReview(String bookId, String email) throws Exception {
+        return reviewRepo.deleterReviewByEmail(bookId, email);
+    }
+
 
     
 }

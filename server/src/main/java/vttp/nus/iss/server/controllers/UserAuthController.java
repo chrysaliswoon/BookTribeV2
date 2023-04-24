@@ -70,9 +70,8 @@ public class UserAuthController {
 
         try {
             if (profileExists == true) {
-                System.out.println(">>>> Error! User not created");
-                System.out.println(">>>> User already exists in Database");
-
+                // System.out.println(">>>> User already exists in Database");
+                return new ResponseEntity<String>("User already exists in Database!", HttpStatus.NOT_FOUND);
             } else {
                 mailSvc.sendVerificationEmail(verifyEmail);
             }
@@ -93,14 +92,15 @@ public class UserAuthController {
 
         try {
             if (!userSvc.authenticateUser(user)) {
+                System.out.println(">>> User login failed!");
                 return new ResponseEntity<String>("User login failed!", HttpStatus.NOT_FOUND);
             } else {
+                // return new ResponseEntity<String>("User login success!", HttpStatus.OK);
                 System.out.println(">>> Successfully Logged In!");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        // System.out.println(user.toJson().toString());
         return new ResponseEntity<String>(user.userJson().toString(), HttpStatus.OK);
     }
 

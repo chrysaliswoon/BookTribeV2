@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Message, MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -8,7 +9,9 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-register-email',
   templateUrl: './register-email.component.html',
-  styleUrls: ['./register-email.component.scss']
+  styleUrls: ['./register-email.component.scss'],
+  providers: [MessageService],
+
 })
 export class RegisterEmailComponent implements OnInit, OnDestroy{
 
@@ -16,6 +19,10 @@ export class RegisterEmailComponent implements OnInit, OnDestroy{
   submitted = false;
   user!: User;
   subcription: Subscription;
+  messages: Message[];
+  userExists: Boolean = false;
+
+
   
   constructor(private fb: FormBuilder, private userSvc: UserService, private router: Router) { }
 
@@ -38,22 +45,29 @@ export class RegisterEmailComponent implements OnInit, OnDestroy{
   }
 
   processRegisterForm() {
-
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
-
     this.submitted = true
     this.user = this.registerForm.value;
+    
+    try {
+      this.subcription = this.userSvc.createUser(this.user).subscribe((response) => {
+        if (this.userExists == false) {
+          this.user = response;
+          localStorage.setItem("email", this.user.email)
+          this.router.navigate(['/auth/verification'])
+        } else {
+          this.userExists = true;
+          this.messages = [{ severity: 'error', summary: 'Error', detail: 'User already exists! Please log in.' }];
+        }
+      },)
+    } catch (error) {
+      console.log(error)
+    }
 
-    this.subcription = this.userSvc.createUser(this.user).subscribe(data => {
-      // console.log(data)
-      this.user = data;
-      localStorage.setItem("email", this.user.email)
-      this.router.navigate(['/auth/verification'])
-      
-    })
+    
   }
 
 }

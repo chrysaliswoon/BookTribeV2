@@ -3,11 +3,13 @@ package vttp.nus.iss.server.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import vttp.nus.iss.server.models.Reviews;
@@ -46,7 +48,7 @@ public class ReviewController {
 
         reviewSvc.createReview(review);
 
-        System.out.println(">>>> Adding review to book");
+        // System.out.println(">>>> Adding review to book");
 
         return new ResponseEntity<String>(review.toJson().toString(), HttpStatus.OK);
     }
@@ -56,9 +58,18 @@ public class ReviewController {
     public List<Reviews> getAllReviewsByUser(@PathVariable String email) {
         List<Reviews> reviewDetails = reviewSvc.getAllReviewsByUser(email);
 
-        System.out.println(">>> Getting Reviews By User");        
+        // System.out.println(">>> Getting Reviews By User");        
 
         return reviewDetails;
+    }
+
+    @DeleteMapping(path = "/delete/{bookId}")
+    @ResponseBody
+    public ResponseEntity<String> deleteUser(@PathVariable String bookId, @RequestParam String email) throws Exception {
+
+        reviewSvc.deleteReview(bookId, email);
+
+        return new ResponseEntity<String>("Review has been deleted!", HttpStatus.OK);
     }
 
 

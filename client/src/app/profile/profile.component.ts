@@ -46,8 +46,8 @@ export class ProfileComponent implements OnInit {
 
   private createForm(): FormGroup {
     return this.fb.group({
-      firstName: this.fb.control<string>('', [Validators.required]),
-      lastName: this.fb.control<string>('', [Validators.required]),
+      firstName: this.fb.control<string>(this.firstName, [Validators.required]),
+      lastName: this.fb.control<string>(this.lastName, [Validators.required]),
       password: this.fb.control<string>('', [Validators.required]),
       profileImg: this.fb.control(Validators.required),
     })

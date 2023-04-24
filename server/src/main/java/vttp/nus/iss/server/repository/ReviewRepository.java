@@ -14,40 +14,46 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
-
 @Repository
 @Transactional
 public class ReviewRepository {
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
+
     // ? Creates a new review for a book linked to a specific user
     public Integer createReview(Reviews review) throws Exception {
-        System.out.println("Creating review in database");
+        // System.out.println("Creating review in database");
         return jdbcTemplate.update(SQL_INSERT_REVIEW, review.getUserEmail(), review.getBookId(), review.getComments());
     }
 
-        //? Find review by User
-        public List<Reviews> findReviewByEmail(String email) {
+    // ? Find review by User
+    public List<Reviews> findReviewByEmail(String email) {
 
-            List<Reviews> result = new LinkedList<>();
-            SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_ALL_REVIEWS_BY_USER, email);
-    
-            while(rs.next()) {
-                Reviews reviews = new Reviews();
-                reviews.setBookId(rs.getString("BOOK_ID"));
-                reviews.setUserEmail(rs.getString("EMAIL"));
-                reviews.setTitle(rs.getString("TITLE"));
-                reviews.setImageUrl(rs.getString("IMAGEURL"));
-                reviews.setComments(rs.getString("COMMENTS"));
-    
-                result.add(reviews);
-            }
-    
-            return result;
+        List<Reviews> result = new LinkedList<>();
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_ALL_REVIEWS_BY_USER, email);
+
+        while (rs.next()) {
+            Reviews reviews = new Reviews();
+            reviews.setBookId(rs.getString("BOOK_ID"));
+            reviews.setUserEmail(rs.getString("EMAIL"));
+            reviews.setTitle(rs.getString("TITLE"));
+            reviews.setImageUrl(rs.getString("IMAGEURL"));
+            reviews.setComments(rs.getString("COMMENTS"));
+
+            result.add(reviews);
         }
 
+        return result;
+    }
 
+    // ? Delete Review
+    public boolean deleterReviewByEmail(String bookId, String email) throws Exception {
+
+        int deleted = jdbcTemplate.update(SQL_DELETE_REVIEW_BY_USER_AND_BOOKID, bookId, email);
+
+        return deleted > 0;
+
+    }
 
 }
