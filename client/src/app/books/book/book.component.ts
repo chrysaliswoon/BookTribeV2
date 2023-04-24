@@ -45,8 +45,15 @@ export class BookComponent implements OnInit {
     })
   }
 
-  searchBook() {
-    this.router.navigate(['dashboard/search']);  
+  // searchBook() {
+  //   this.router.navigate(['dashboard/search']);  
+  // }
+
+  bookReviews(id: string) {
+      console.log(id)
+
+      this.router.navigate(['dashboard/reviews/:id']);  
+
   }
 
 

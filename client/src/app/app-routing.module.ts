@@ -18,6 +18,7 @@ import { SuccessComponent } from './billing/success/success.component';
 import { BookComponent } from './books/book/book.component';
 import { MemberProfileComponent } from './tribe/member-profile/member-profile.component';
 import { ReviewsComponent } from './reviews/reviews.component';
+import { BookReviewsComponent } from './books/book-reviews/book-reviews.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
       {path: 'billing', component: BillingComponent},
       {path: 'search/:id', component: BookListComponent},
       {path: 'book/:id', component: BookComponent},
+      {path: 'reviews/:id', component: BookReviewsComponent},
       {path: 'user/:id', component: MemberProfileComponent},
       {path: 'checkout', component: BillingComponent},
       { path: 'success', component: SuccessComponent },

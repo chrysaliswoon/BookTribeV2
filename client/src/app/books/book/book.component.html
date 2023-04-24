@@ -20,7 +20,7 @@
                 <form>
                   <input type="hidden" name="favourite" data-th-value="${d.id}">
                   <button pButton pRipple type="button" icon="pi pi-bookmark" label="Favourite" class="p-button-raised" (click)="addBook(b.id, b.title, b.imgUrl)"></button>
-                  <button pButton pRipple type="button" icon="pi pi-search" label="Search" class="p-button-raised" (click)="searchBook()"></button>
+                  <button pButton pRipple type="button" icon="pi pi-book" label="Reviews" class="p-button-raised" (click)="bookReviews(b.id)"></button>
                 </form>
               </div>
             </dl>

@@ -24,6 +24,8 @@ import { MenuModule } from 'primeng/menu';
 import {CardModule} from 'primeng/card';
 import {ConfirmPopupModule} from 'primeng/confirmpopup';
 import { ImageModule } from 'primeng/image';
+import { Chip, ChipModule } from 'primeng/chip';
+import { ChipsModule } from 'primeng/chips';
 
 const components: any [] = [
     CommonModule,
@@ -51,7 +53,9 @@ const components: any [] = [
     ButtonModule,
     CardModule,
     ConfirmPopupModule,
-    ImageModule
+    ImageModule,
+    ChipsModule,
+    ChipModule
 ]
 
 @NgModule({

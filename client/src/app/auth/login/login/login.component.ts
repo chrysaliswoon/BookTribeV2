@@ -16,6 +16,11 @@ export class LoginComponent implements OnInit{
   confirmed: boolean = false;
   registerOptions: boolean = true;
   email:boolean = false;
+  visible: boolean;
+
+  showDialog() {
+      this.visible = true;
+  }
   
 	constructor(private fb: FormBuilder, private router: Router, private layoutService: LayoutService) {}
   
