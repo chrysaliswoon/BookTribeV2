@@ -30,3 +30,5 @@ export class GoogleMapComponent implements OnInit{
   }
 
 }
+
+

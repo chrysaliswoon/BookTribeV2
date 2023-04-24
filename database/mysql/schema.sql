@@ -47,4 +47,4 @@ CREATE TABLE  `reviews` (
 
 
 -- All Book Review Table --
-CREATE TABLE book_reviews AS SELECT BOOKSHELF.BOOK_ID, reviews.EMAIL, BOOKSHELF.TITLE, BOOKSHELF.IMAGEURL, reviews.COMMENTS FROM BOOKSHELF INNER JOIN REVIEWS ON bookshelf.BOOK_ID=reviews.BOOK_ID;
+CREATE TABLE book_reviews AS SELECT bookshelf.BOOK_ID, reviews.EMAIL, bookshelf.TITLE, bookshelf.IMAGEURL, reviews.COMMENTS FROM bookshelf INNER JOIN REVIEWS ON bookshelf.BOOK_ID=reviews.BOOK_ID;

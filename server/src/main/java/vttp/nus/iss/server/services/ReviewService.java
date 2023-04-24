@@ -23,14 +23,21 @@ public class ReviewService {
     }
 
     public List<Reviews> getAllReviewsByUser(String email){
-        List<Reviews> allReviews = reviewRepo.findReviewByEmail(email);
+        List<Reviews> allReviewsByUser = reviewRepo.findReviewByEmail(email);
+
+        return allReviewsByUser;
+        
+    }
+
+    public List<Reviews> getAllReviews(String bookId){
+        List<Reviews> allReviews = reviewRepo.findReviewById(bookId);
 
         return allReviews;
         
     }
 
     public boolean deleteReview(String bookId, String email) throws Exception {
-        return reviewRepo.deleterReviewByEmail(bookId, email);
+        return reviewRepo.deleteReviewByEmail(bookId, email);
     }
 
 

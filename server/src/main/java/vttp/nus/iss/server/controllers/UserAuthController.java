@@ -104,7 +104,7 @@ public class UserAuthController {
         return new ResponseEntity<String>(user.userJson().toString(), HttpStatus.OK);
     }
 
-    @GetMapping(path = "{email}")
+    @GetMapping(path = "/{email}")
     @ResponseBody
     public Optional<User> getUserDetails(@PathVariable String email) {
         Optional<User> userDetails = userSvc.getUserDetails(email);
@@ -113,7 +113,7 @@ public class UserAuthController {
         return userDetails;
     }
 
-    @GetMapping(path = "users")
+    @GetMapping(path = "/users")
     @ResponseBody
     public List<User> getAllUsers() {
         

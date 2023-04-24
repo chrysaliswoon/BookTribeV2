@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import vttp.nus.iss.server.models.Reviews;
 import vttp.nus.iss.server.services.ReviewService;
 
+import java.io.Console;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 
 @Controller
@@ -58,10 +61,9 @@ public class ReviewController {
     public List<Reviews> getAllReviewsByUser(@PathVariable String email) {
         List<Reviews> reviewDetails = reviewSvc.getAllReviewsByUser(email);
 
-        // System.out.println(">>> Getting Reviews By User");        
-
         return reviewDetails;
     }
+
 
     @DeleteMapping(path = "/delete/{bookId}")
     @ResponseBody
@@ -70,6 +72,15 @@ public class ReviewController {
         reviewSvc.deleteReview(bookId, email);
 
         return new ResponseEntity<String>("Review has been deleted!", HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/userReviews/{bookId}")
+    @ResponseBody
+    public List<Reviews> getAllReviews(@PathVariable String bookId) {
+        // System.out.println("Getting all reviews");
+        List<Reviews> allReviews = reviewSvc.getAllReviews(bookId);
+
+        return allReviews;
     }
 
 

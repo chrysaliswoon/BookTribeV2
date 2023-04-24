@@ -47,8 +47,28 @@ public class ReviewRepository {
         return result;
     }
 
+    // ? Find all reviews
+    public List<Reviews> findReviewById(String bookId) {
+
+        List<Reviews> result = new LinkedList<>();
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_FIND_ALL_REVIEWS_BY_BOOKID, bookId);
+
+        while (rs.next()) {
+            Reviews reviews = new Reviews();
+            reviews.setUserEmail(rs.getString("EMAIL"));
+            reviews.setTitle(rs.getString("TITLE"));
+            reviews.setImageUrl(rs.getString("IMAGEURL"));
+            reviews.setComments(rs.getString("COMMENTS"));
+
+            result.add(reviews);
+        }
+
+        return result;
+    }
+
+
     // ? Delete Review
-    public boolean deleterReviewByEmail(String bookId, String email) throws Exception {
+    public boolean deleteReviewByEmail(String bookId, String email) throws Exception {
 
         int deleted = jdbcTemplate.update(SQL_DELETE_REVIEW_BY_USER_AND_BOOKID, bookId, email);
 

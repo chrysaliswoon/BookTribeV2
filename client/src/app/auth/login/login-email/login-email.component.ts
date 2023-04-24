@@ -43,34 +43,40 @@ export class LoginEmailComponent implements OnInit, OnDestroy {
   loginToAccount() {
     try {
       this.userSvc.verifyUser(this.user).subscribe(data => {
-        this.user = data;
         this.loggedIn = true;
+        return this.user = data;
       },)
+
     } catch (error) {
-      this.loggedIn = false;
     }
   }
 
   getUserDetails() {
-    // console.log(this.loggedIn)
     this.user = this.loginForm.value;
     this.loginToAccount()
+
     if (this.loggedIn == false) {
       this.messages = [{ severity: 'error', summary: 'Error', detail: 'Incorrect User Credentials!' }];
+
     } else {
       this.messages = [{ severity: 'success', summary: 'Success', detail: 'Successfully logged in!' }];
-        this.subcription = this.userSvc.getUser(this.user.email).subscribe((response) => {
-          this.user = response;
-          localStorage.setItem("username", this.user.username);
-          localStorage.setItem("firstName", this.user.firstName);
-          localStorage.setItem("lastName", this.user.lastName);
-          localStorage.setItem("email", this.user.email);
-          localStorage.setItem("profileImg", this.user.profileImg);          
-          this.goToWelcomePage()
-        }); 
+      this.subcription = this.userSvc.getUser(this.user.email).subscribe((response) => {
+        this.user = response;
+        localStorage.setItem("username", this.user.username);
+        localStorage.setItem("firstName", this.user.firstName);
+        localStorage.setItem("lastName", this.user.lastName);
+        localStorage.setItem("email", this.user.email);
+        localStorage.setItem("profileImg", this.user.profileImg);
+
+        this.goToWelcomePage()
+      });
+
     }
-    
-    
+
+
+
+
+
   }
 
   goToWelcomePage() {
