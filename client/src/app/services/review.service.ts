@@ -31,6 +31,11 @@ export class ReviewService {
         return this.http.get<AllReviews[]>(url);
     }
 
+    getReviewsById(bookId: string): Observable<AllReviews[]> {
+        const url = this.baseURL + "userReviews/" + bookId
+        return this.http.get<AllReviews[]>(url);
+    }
+
 
 
 }

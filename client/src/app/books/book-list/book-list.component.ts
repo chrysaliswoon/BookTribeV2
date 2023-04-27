@@ -15,7 +15,7 @@ import { BookService } from 'src/app/services/book.service';
 export class BookListComponent implements OnInit{
 
   books!: Book[];
-  bookName: String = '';
+  bookName: string = '';
   shelf!: Shelf
   bookSubscription: Subscription
 
@@ -26,6 +26,29 @@ export class BookListComponent implements OnInit{
     this.getBooks(this.bookName);
   }
 
+  
+  getBooks(bookName: string) {
+    this.bookSubscription = this.bookSvc.getBooks(this.bookName).subscribe(data => {
+      this.books = data
+    });}
+    
+    
+    addBook(id: string, title: string, url: string) {
+      
+      const email = localStorage.getItem("email");
+      
+      this.bookSvc.saveBooks(email, id, title, url).subscribe(data => {
+        this.router.navigate(['dashboard']);  
+      })
+    }
+    
+    bookDetails(id: string) {
+      this.router.navigate(['dashboard/book', id]);  
+      
+    }
+    
+  }
+  
   // ngOnChanges(changes: SimpleChanges): void {
   //   const paramId = this.route.snapshot.params['id']
   //   changes[paramId];
@@ -36,26 +59,3 @@ export class BookListComponent implements OnInit{
   // ngOnDestroy(): void {
   //     this.bookSubscription.unsubscribe()
   // }
-
-  getBooks(bookName: String) {
-    this.bookSubscription = this.bookSvc.getBooks(this.bookName).subscribe(data => {
-       this.books = data
-  });}
-
-
-addBook(id: string, title: string, url: string) {
-
-  const email = localStorage.getItem("email");
-
-  this.bookSvc.saveBooks(email, id, title, url).subscribe(data => {
-    this.router.navigate(['dashboard']);  
-  })
-}
-
-bookDetails(id: string) {
-  this.router.navigate(['dashboard/book', id]);  
-
-}
-
-
-}

@@ -22,7 +22,7 @@ export class BookComponent implements OnInit {
 
     this.id = this.route.snapshot.params['id'];
     this.getBook(this.id);
-    
+
   }
 
   getBook(id: string) {
@@ -32,28 +32,15 @@ export class BookComponent implements OnInit {
   }
 
   addBook(id: string, title: string, url: string) {
-
-    console.log(id)
-    console.log(title)
-    console.log(url)
-
-
     const email = localStorage.getItem("email");
-  
+
     this.bookSvc.saveBooks(email, id, title, url).subscribe(data => {
-      this.router.navigate(['dashboard']);  
+      this.router.navigate(['dashboard']);
     })
   }
 
-  // searchBook() {
-  //   this.router.navigate(['dashboard/search']);  
-  // }
-
   bookReviews(id: string) {
-      console.log(id)
-
-      this.router.navigate(['dashboard/reviews/:id']);  
-
+    this.router.navigate(['dashboard/reviews/', id]);
   }
 
 
